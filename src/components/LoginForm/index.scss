@@ -1,0 +1,13 @@
+.login {
+  margin: 0;
+  padding: 0;
+}
+
+.login__background {
+  height: 100vh;
+
+  background-image: url("../../img/login-background.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}

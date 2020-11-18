@@ -6,7 +6,7 @@ import { Login } from './pages/Login';
 export default function App() {
   return (
     <BrowserRouter>
-      <div className="container pt-4">
+      <div className="app">
         <Switch>
           <Route path="/" exact component={Home}/>
           <Route path="/login" exact component={Login}/>

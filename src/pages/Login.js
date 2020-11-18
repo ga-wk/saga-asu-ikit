@@ -6,7 +6,6 @@ export const Login = () => {
   return (
     <Fragment>
       <LoginForm/>
-      <h1>Login Page</h1>
     </Fragment>
   )
 }
