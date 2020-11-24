@@ -63,10 +63,91 @@
 }
 
 .login__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   width: 240px;
   height: 280px;
 
   border-radius: 10%;
 
   background-color: #ffffff;
+}
+
+.login__text {
+  font-family: 'DIN Pro';
+  font-size: 18px;
+  color: #575757;
+
+  padding: 0;
+  margin: 0;
+  margin-top: 28px;
+  margin-bottom: 26px;
+}
+
+.login__input {
+  box-sizing: border-box;
+  width: 185px;
+  padding-left: 40px;
+  padding-right: 10px;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  color: #575757;
+  font-size: 14px;
+  font-family: 'DIN Pro';
+
+
+  background-color: #f0f0f0;
+  border: none;
+}
+
+.login__input:focus .login__icon path,
+.login__input:active .login__icon path {
+  fill: #575757;
+}
+
+.login__field {
+  position: relative;
+}
+
+.login__field svg {
+  position: absolute;
+  top: 9px;
+  left: 10px;
+}
+
+.login__login {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+.login__password {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 25px;
+}
+
+.login__button {
+  font-family: 'DIN Pro';
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+  text-transform: uppercase;
+
+  padding: 5px 63px;
+
+  background: linear-gradient(#fab216, #f28f1b);
+  border: none;
+  box-shadow: 0 5px 4px 0 rgba($color: #000000, $alpha: 0.25);
+}
+
+.login__button:active,
+.login__button:hover {
+  transition: ease-in-out;
+  transition-duration: 0.3s;
+  background: linear-gradient(#f28f1b, #e63e11);
 }
