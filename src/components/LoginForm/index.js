@@ -1,19 +1,20 @@
 import React, { Fragment } from 'react';
 
 import './index.scss';
-import { sfuLoginImageMobile } from "../../assets/images";
+import { sfuLoginImageTablet, sfuLoginImageMobile } from "../../assets/images";
 
 
 export const LoginForm = () => (
   <section className="login">
-  <div className="login__background"></div>
+  {/* <div className="login__background"></div> */}
   <div className="login__wrapper">
     <div className="login__wrapper-fixed">
       <p className="login__logo">
-        <img className="login__logo-image" src={sfuLoginImageMobile} width="54" height="61" alt="СФУ ЛОГО" />
-        <span className="login__logo-title">АСУ ИКИТ</span>
+        <img className="login__logo-image mobile-image-logo" src={sfuLoginImageMobile} width="54" height="61" alt="СФУ ЛОГО" />
+        <img className="login__logo-image tablet-image-logo" src={sfuLoginImageTablet} width="117" height="226" alt="СФУ ЛОГО"/>
+        <span className="login__logo-title">АСУ<br/>ИКИТ</span>
       </p>
-      <form className="login__form">
+      <form className="login__form" method="POST">
         <p className="login__text">Вход в личный кабинет:</p>
         <p className="login__field login__login">
           <input className="login__input login__login-input" type="text" name="login" placeholder="Логин"/>
