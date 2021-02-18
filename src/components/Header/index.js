@@ -4,10 +4,36 @@ import './index.scss'
 
 import { sfuLogoHeaderMobile } from '../../assets/images'
 
+function closedAll() {
+  const sidebar = document.querySelector('.main-header__sidebar')
+  const subnav = document.querySelector('.sidebar__subnav')
+  const help = document.querySelector('.main-header__help')
+
+  if (sidebar.classList.contains('sidebar--opened')) {
+    sidebar.classList.remove('sidebar--opened')
+    sidebar.classList.add('sidebar--closed')
+  }
+  if (subnav.classList.contains('sidebar__item--opened')) {
+    subnav.classList.remove('sidebar__item--opened')
+    subnav.classList.add('sidebar__item--closed')
+  }
+  if (help.classList.contains('help--open')) {
+    help.classList.remove('help--open')
+    help.classList.add('help--closed')
+  }
+  // sidebar.classList.remove('sidebar--opened')
+  // subnav.classList.remove('sidebar__item--opened')
+  // help.classList.remove('help--open')
+  // sidebar.removeEventListener()
+  // subnav.removeEventListener()
+  // help.removeEventListener()
+}
+
 function sidebarClick(e) {
   e.preventDefault()
   const sidebar = document.querySelector('.main-header__sidebar')
   if (sidebar.classList.contains('sidebar--closed')) {
+    closedAll()
     sidebar.classList.remove('sidebar--closed')
     sidebar.classList.add('sidebar--opened')
   } else if (sidebar.classList.contains('sidebar--opened')) {
@@ -32,6 +58,7 @@ function helpClick(e) {
   e.preventDefault()
   const help = document.querySelector('.main-header__help')
   if (help.classList.contains('help--closed')) {
+    closedAll()
     help.classList.remove('help--closed')
     help.classList.add('help--open')
   } else if (help.classList.contains('help--open')) {
@@ -75,6 +102,7 @@ export const Header = () => (
           </ul>
         </li>
       </ul>
+
       <button className="sidebar__toggle" type="button" onClick={sidebarClick}>Закрыть</button>
     </aside>
   </header>
