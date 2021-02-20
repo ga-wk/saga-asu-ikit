@@ -10,6 +10,8 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 100% 100%;
+
+  overflow: hidden;
 }
 
 .login__background {
@@ -17,7 +19,7 @@
   top: 0;
   left: 0;
   padding-top: 1px;
-  height: 100vh;
+  height: 100%;
 
   background-image: url("../../img/login-background.jpg");
   background-repeat: no-repeat;
