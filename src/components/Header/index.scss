@@ -25,7 +25,7 @@
 }
 
 .main-header {
-  max-width: 320px;
+  max-width: 376px;
   margin: 0 auto;
   position: relative;
 }
@@ -223,6 +223,11 @@
   padding-top: 10px;
 
   border-left: 2px solid #000000;
+
+  &:active,
+  &:hover {
+    cursor: pointer;
+  }
 
   // &::after {
   //   content: "";

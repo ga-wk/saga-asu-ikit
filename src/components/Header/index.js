@@ -72,7 +72,7 @@ export const Header = () => (
     <div className="main-header__top">
       <div className="main-header__inner-wrapper">
         <img className="main-header__logo-image" src={sfuLogoHeaderMobile} width="50" height="50" alt="СФУ ЛОГО" />
-        <div className="main-header__profile">
+        <div className="main-header__profile" onClick={helpClick}>
         <span className="main-header__student-name">Виктор</span>
         <span className="main-header__student-icon">
         <svg width="40" height="40" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -86,7 +86,7 @@ export const Header = () => (
             <li className="help__item"><a className="help__link" href="#">Сообщить о проблеме</a></li>
             <li className="help__item"><a className="help__link" href="#">Выход</a></li>
           </ul>
-          <button className="help__toggle" onClick={helpClick}>Закрыть</button>
+          <button className="help__toggle">Закрыть</button>
         </div>
         </div>
       </div>
