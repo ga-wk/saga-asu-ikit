@@ -1,3 +1,5 @@
+@import "../../styles/variables.scss";
+
 .profile {
     max-width: 376px;
 
@@ -10,7 +12,8 @@
     font-weight: 300;
 
     margin-left: 32px;
-    margin-top: 8px;
+    margin-top: 15px;
+    margin-bottom: 10px;
 }
 
 .main-title__link {
@@ -30,6 +33,223 @@
     }
 }
 
-.profile-info__name {
+.buttons-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-info {
+    width: 250px;
     
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    margin: 0 auto;
+}
+
+.profile-info__name {
+    font-size: 40px;
+    line-height: 50px;
+    font-weight: 700;
+    text-align: center;
+
+    color: #222322;
+
+    margin-bottom: 17px;
+}
+
+.profile-info__input {
+    width: 100%;
+}
+
+.profile-info__list {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.profile-info__item {
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 5px;
+}
+
+.profile-info__item:last-child {
+    margin-bottom: 20px;
+}
+
+.profile-info__label {
+    color: #575757;
+
+    font-family: "DIN Pro", Arial, sans-serif;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: normal;
+    text-align: center;
+
+    display: inline-block;
+    padding-bottom: 2px;
+    margin: 0 auto;
+
+    margin-bottom: 10px;
+
+    border-bottom: 1px solid #e63e11;
+
+    // width: 130px;
+
+    &:hover,
+    &:active {
+        cursor: pointer;
+    }
+}
+
+.profile-info__input--closed {
+    display: none;
+}
+
+.profile-info__input--opened {
+    display: block;
+}
+
+.profile-info__button {
+    font: inherit;
+
+    color: 222322;
+    font-size: 18px;
+    line-height: 18px;
+
+    background-color: #F28F1B;
+
+    border: none;
+    
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    border-radius: 5px;
+
+    &:hover,
+    &:focus,
+    &:active {
+        box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.5);
+    }
+}
+
+.profile-info__button-material {
+    margin-bottom: 17px;
+}
+
+
+.profile-info__desc {
+    display: none;
+}
+
+
+
+@media (min-width: $tablet-width) {
+    .profile {
+        max-width: 768px;
+    }
+
+    .profile-info {
+        margin-top: 50px;
+        margin-bottom: 100px;
+        
+        width: 700px;
+
+        background-color: #fafafa;
+
+        border: 4px solid #F28F1B;
+    }
+
+    .profile-info__name {
+        margin-top: 33px;
+    }
+
+    .buttons-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        margin: 0 auto;
+
+        margin-bottom: 40px;
+
+        width: 530px;
+    }
+
+    .profile-info__button {
+        box-sizing: border-box;
+        width: 250px;
+        margin: 0;
+    }
+
+    .profile-info__item {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        
+        margin-left: 81px;
+
+        margin-bottom: 15px;
+    }
+
+    .profile-info__inner-wrapper {
+        margin-right: 81px;
+    }
+
+    .profile-info__label {
+        margin: 0;
+        // margin-right: 100px;
+    }
+
+    .profile-info__desc {
+        display: block;
+    }
+
+    .profile-info__desc--show {
+        display: block;
+    }
+    
+    .profile-info__desc--hide {
+        display: none;
+    }
+}
+
+@media (min-width: $desktop-width) {
+    .profile {
+        max-width: 1440px;
+    }
+
+    .profile-info {
+        width: 900px;
+    }
+
+    .profile-info__name {
+        font-size: 44px;
+        line-height: 44px;
+    }
+
+    .profile-info__label {
+        font-size: 24px;
+        line-height: 24px;
+        padding-bottom: 10px;
+    }
+
+    .profile-info__desc {
+        font-size: 24px;
+        line-height: 24px;
+    }
+
+    .profile-info__button {
+        font-size: 24px;
+        line-height: 24px;
+    }
+
+    .main-title {
+        font-size: 28px;
+        line-height: 28px;
+    }
 }

@@ -67,6 +67,15 @@ function helpClick(e) {
   }
 }
 
+// function hideModal(e) {
+//   const sidebar = document.querySelector('.main-header__sidebar')
+
+//   if (sidebar.classList.contains('sidebar--opened')) {
+//     sidebar.classList.remove('sidebar--opened')
+//     sidebar.classList.add('sidebar--closed')
+//   }
+// }
+
 export const Header = () => (
   <header className="main-header">
     <div className="main-header__top">

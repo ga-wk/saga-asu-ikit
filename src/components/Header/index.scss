@@ -40,6 +40,9 @@
 }
 
 .sidebar__list {
+  position: absolute;
+  z-index: 1;
+
   width: 260px;
   min-height: 100vh;
 
@@ -166,6 +169,8 @@
 
 .help__list {
   position: absolute;
+  z-index: 1;
+  
   top: 71px;
   right: 0;
 
