@@ -77,7 +77,7 @@ function helpClick(e) {
 // }
 
 export const Header = () => (
-  <header className="main-header">
+  <header className="main-header ">
     <div className="main-header__top">
       <div className="main-header__inner-wrapper">
         <img className="main-header__logo-image" src={sfuLogoHeaderMobile} width="50" height="50" alt="СФУ ЛОГО" />

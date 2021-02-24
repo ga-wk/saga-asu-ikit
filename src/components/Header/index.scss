@@ -10,7 +10,10 @@
 
 .main-header__logo-image {
   display: block;
-  margin-right: 18px;
+  position: relative;
+
+    margin: 0 auto;
+  // margin-right: 18px;
 }
 
 .main-header__inner-wrapper {
@@ -25,7 +28,7 @@
 }
 
 .main-header {
-  max-width: 425px;
+  min-width: 320px;
   margin: 0 auto;
   position: relative;
 }
@@ -229,6 +232,8 @@
 
   border-left: 2px solid #000000;
 
+  margin-left: 18px;
+  
   &:active,
   &:hover {
     cursor: pointer;
