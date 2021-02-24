@@ -10,14 +10,14 @@
 
 .main-header__logo-image {
   display: block;
-  margin-right: 48px;
+  margin-right: 18px;
 }
 
 .main-header__inner-wrapper {
   display: flex;
   justify-content: space-between;
 
-  margin-left: 118px;
+  margin-left: 100px;
 
   display: flex;
   flex-direction: row;
@@ -40,6 +40,9 @@
 }
 
 .sidebar__list {
+  position: absolute;
+  z-index: 1;
+
   width: 260px;
   min-height: 100vh;
 
@@ -166,6 +169,8 @@
 
 .help__list {
   position: absolute;
+  z-index: 1;
+  
   top: 71px;
   right: 0;
 
@@ -210,8 +215,9 @@
 .main-header__profile {
   display: flex;
   align-items: center;
+  flex-direction: column;
 
-  position: relative;
+  // position: relative;
 
   width: 160px;
   height: 70px;
@@ -219,28 +225,36 @@
   padding-right: 20px;
   padding-left: 15px;
 
+  padding-top: 10px;
+
   border-left: 2px solid #000000;
 
-  &::after {
-    content: "";
-
-    position: absolute;
-    width: 40px;
-    height: 40px;
-
-    top: 15px;
-    right: 45px;
-
-    background-image: url("../../img/profile.svg");
-    background-position: 0 0;
-    background-repeat: no-repeat;
+  &:active,
+  &:hover {
+    cursor: pointer;
   }
+
+  // &::after {
+  //   content: "";
+
+  //   position: absolute;
+  //   width: 40px;
+  //   height: 40px;
+
+  //   top: 15px;
+  //   right: 45px;
+
+  //   background-image: url("../../img/profile.svg");
+  //   background-position: 0 0;
+  //   background-repeat: no-repeat;
+  // }
 }
 
-.main-header__student-name {
 
+
+.main-header__student-name {
+  order: 1;
   display: block;
-  max-width: 50px;
   font-family: 'Cera Pro', 'Arial', sans-serif;
   font-weight: 500;
   font-size: 14px;
@@ -248,14 +262,41 @@
 
   color: #575757;
 
+  // &::after {
+  //   content: "";
 
+  //   position: absolute;
+  //   width: 40px;
+  //   height: 40px;
+
+  //   top: 15px;
+  //   right: 40px;
+
+  //   background-image: url("../../img/profile.svg");
+  //   background-position: 0 0;
+  //   background-repeat: no-repeat;
+  // }
+
+}
+
+.main-header__student-icon svg {
+  width: 20px;
+  height: 20px;
+
+  
+  // width: 40px;
+  // height: 40px;
+
+  // background-image: url("../../img/profile.svg");
+  // background-position: 0 0;
+  // background-repeat: no-repeat;
 }
 
 .help__toggle {
 
   position: absolute;
   top: 30px;
-  right: 17px;
+  right: 12px;
 
   font-size: 0;
 
@@ -374,6 +415,11 @@
     position: relative;
 
     margin: 0 auto;
+  }
+
+  .main-header__student-icon svg {
+    width: 40px;
+    height: 40px;
   }
 }
 

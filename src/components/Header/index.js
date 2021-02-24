@@ -67,20 +67,35 @@ function helpClick(e) {
   }
 }
 
+// function hideModal(e) {
+//   const sidebar = document.querySelector('.main-header__sidebar')
+
+//   if (sidebar.classList.contains('sidebar--opened')) {
+//     sidebar.classList.remove('sidebar--opened')
+//     sidebar.classList.add('sidebar--closed')
+//   }
+// }
+
 export const Header = () => (
   <header className="main-header">
     <div className="main-header__top">
       <div className="main-header__inner-wrapper">
         <img className="main-header__logo-image" src={sfuLogoHeaderMobile} width="50" height="50" alt="СФУ ЛОГО" />
-        <div className="main-header__profile">
+        <div className="main-header__profile" onClick={helpClick}>
         <span className="main-header__student-name">Виктор</span>
+        <span className="main-header__student-icon">
+        <svg width="40" height="40" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 0.431641C8.955 0.431641 0 9.38664 0 20.4316C0 31.4766 8.955 40.4316 20 40.4316C31.045 40.4316 40 31.4766 40 20.4316C40 9.38664 31.045 0.431641 20 0.431641ZM32.9217 30.94C32.4867 29.9633 31.6067 29.2883 29.8033 28.8716C25.9817 27.99 22.4233 27.2166 24.1483 23.9633C29.39 14.06 25.5367 8.76497 20 8.76497C14.3533 8.76497 10.5933 14.2633 15.8517 23.9633C17.6283 27.2366 13.9383 28.0083 10.1967 28.8716C8.39 29.2883 7.51667 29.9683 7.085 30.9483C4.74333 28.0766 3.33333 24.4166 3.33333 20.4316C3.33333 11.2416 10.81 3.76497 20 3.76497C29.19 3.76497 36.6667 11.2416 36.6667 20.4316C36.6667 24.4133 35.2583 28.07 32.9217 30.94Z" fill="#575757"/>
+        </svg>
+
+        </span>
         <div className="main-header__help help help--closed">
           <ul className="help__list">
             <li className="help__item"><a className="help__link" href="#">Помощь</a></li>
             <li className="help__item"><a className="help__link" href="#">Сообщить о проблеме</a></li>
             <li className="help__item"><a className="help__link" href="#">Выход</a></li>
           </ul>
-          <button className="help__toggle" onClick={helpClick}>Закрыть</button>
+          <button className="help__toggle">Закрыть</button>
         </div>
         </div>
       </div>
