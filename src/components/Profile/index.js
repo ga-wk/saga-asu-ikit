@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 
 import './index.scss'
+import '../../styles/reprise.scss'
+
 import { Header } from '../Header';
 
 function clickProfileLabel(e) {
@@ -30,11 +32,11 @@ function clickProfileLabel(e) {
 export const Profile = () => {
     return (
         <>
-            <Header/>
+            <Header />
+            <h1 className="main-title">
+                <a className="main-title__link">Профиль</a>
+            </h1>
             <div className="profile">
-                <h1 className="main-title">
-                    <a className="main-title__link">Профиль</a>
-                </h1>
                 <div className="profile-info">
                     <span className="profile-info__name">Сахно Виктор Викторович</span>
                     <ul className="profile-info__list">
@@ -42,14 +44,14 @@ export const Profile = () => {
                             <label className="profile-info__label" for="birthday" onClick={clickProfileLabel}>День Рождения</label>
                             <div className="profile-info__inner-wrapper">
                                 <span className="profile-info__desc profile-info__desc--show">16.05.2000</span>
-                                <input className="profile-info__input profile-info__input--birthday profile-info__input--closed" type="date" id="birthday" name="birthday"/>
+                                <input className="profile-info__input profile-info__input--birthday profile-info__input--closed" type="date" id="birthday" name="birthday" />
                             </div>
                         </li>
                         <li className="profile-info__item">
                             <label className="profile-info__label" for="mail" onClick={clickProfileLabel}>Email</label>
                             <div className="profile-info__inner-wrapper">
                                 <span className="profile-info__desc profile-info__desc--show">sakhnovict@gmail.com</span>
-                                <input className="profile-info__input profile-info__input--email profile-info__input--closed" type="text" id="mail" name="mail"/>
+                                <input className="profile-info__input profile-info__input--email profile-info__input--closed" type="text" id="mail" name="mail" />
                             </div>
                         </li>
                         <li className="profile-info__item">
