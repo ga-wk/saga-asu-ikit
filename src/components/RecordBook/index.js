@@ -16,7 +16,7 @@ function itemClick(e) {
     }
 }
 
-function RecordBookHeader() {
+export function RecordBookHeader() {
     return (
         <>
             <header className="record-book__header container">
@@ -418,7 +418,6 @@ export const RecordBook = () => {
             <section className="record-book container">
                 <RecordBookFragments pageWidth={document.documentElement.scrollWidth} />
             </section>
-
         </>
     )
 }

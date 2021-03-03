@@ -6,6 +6,8 @@ import { HeaderPage } from './pages/HeaderPage'
 import { ProfilePage } from './pages/ProfilePage'
 import { NotificationsPage } from './pages/NotificationsPage'
 import { RecordBookPage } from './pages/RecordBookPage'
+import { EventsCalendarPage } from './pages/EventsCalendarPage'
+import { EventsCalendar } from './components/EventsCalendar';
 
 export default function App() {
   return (
@@ -18,6 +20,7 @@ export default function App() {
           <Route path="/profile" exact component={ProfilePage}/>
           <Route path="/notifications" exact component={NotificationsPage}/>
           <Route path="/recordbook" exact component={RecordBookPage}/>
+          <Route path="/eventscalendar" exact component={ EventsCalendarPage }/>
         </Switch>
       </div>
     </BrowserRouter>
