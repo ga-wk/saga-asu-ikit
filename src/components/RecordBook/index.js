@@ -5,6 +5,17 @@ import '../../styles/reprise.scss'
 
 import { Header } from '../Header';
 
+function itemClick(e) {
+    e.preventDefault()
+    if (e.target.parentElement.classList.contains('item_close')) {
+        e.target.parentElement.classList.add('item_open');
+        e.target.parentElement.classList.remove('item_close');
+    } else if (e.target.parentElement.classList.contains('item_open')) {
+        e.target.parentElement.classList.add('item_close');
+        e.target.parentElement.classList.remove('item_open');
+    }
+}
+
 function RecordBookHeader() {
     return (
         <>
@@ -28,14 +39,231 @@ function RecordBookHeader() {
         </>
     )
 }
+
 function MobileFragment() {
     return (
         <>
             <section className="record-book container">
-                <ul className="record-book__list">
-                    <li className="record-book__item">
-                        <h3 className="record-book__title">
+                <ul className="record-book__list " onClick={itemClick}>
+                    <li className="record-book__item item_close ">
+                        <h3 className="record-book__title exam">
                             Программирование на COS в Intersystems Cache
+                        </h3>
+                        <div className="record-book__info">
+                            <ul className="info__list">
+                                <li className="info__item">
+                                    Кол-во часов: 144( з.е.)
+                                </li>
+                                <li className="info__item">
+                                    Оценка: -
+                                </li>
+                                <li className="info__item">
+                                    Дата: -
+                                </li>
+                                <li className="info__item">
+                                    Преподователь: Погребников Алексанр Константинович
+                                </li>
+                                <li className="info__item">
+                                    Доп. Информация: -
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li className="record-book__item item_close ">
+                        <h3 className="record-book__title exam">
+                            Проектирование и архитектура информационных систем
+                        </h3>
+                        <div className="record-book__info">
+                            <ul className="info__list">
+                                <li className="info__item">
+                                    Кол-во часов: 144( з.е.)
+                                </li>
+                                <li className="info__item">
+                                    Оценка: -
+                                </li>
+                                <li className="info__item">
+                                    Дата: -
+                                </li>
+                                <li className="info__item">
+                                    Преподователь: Погребников Алексанр Константинович
+                                </li>
+                                <li className="info__item">
+                                    Доп. Информация: -
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li className="record-book__item item_close ">
+                        <h3 className="record-book__title exam">
+                            Язык программирования C#
+                        </h3>
+                        <div className="record-book__info">
+                            <ul className="info__list">
+                                <li className="info__item">
+                                    Кол-во часов: 144( з.е.)
+                                </li>
+                                <li className="info__item">
+                                    Оценка: -
+                                </li>
+                                <li className="info__item">
+                                    Дата: -
+                                </li>
+                                <li className="info__item">
+                                    Преподователь: Погребников Алексанр Константинович
+                                </li>
+                                <li className="info__item">
+                                    Доп. Информация: -
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li className="record-book__item item_close ">
+                        <h3 className="record-book__title offset">
+                            Командный курсовой проект “Корпоративные приложения”
+                        </h3>
+                        <div className="record-book__info">
+                            <ul className="info__list">
+                                <li className="info__item">
+                                    Кол-во часов: 144( з.е.)
+                                </li>
+                                <li className="info__item">
+                                    Оценка: -
+                                </li>
+                                <li className="info__item">
+                                    Дата: -
+                                </li>
+                                <li className="info__item">
+                                    Преподователь: Погребников Алексанр Константинович
+                                </li>
+                                <li className="info__item">
+                                    Доп. Информация: -
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li className="record-book__item item_close ">
+                        <h3 className="record-book__title offset">
+                            Модели стохастических объектов
+                        </h3>
+                        <div className="record-book__info">
+                            <ul className="info__list">
+                                <li className="info__item">
+                                    Кол-во часов: 144( з.е.)
+                                </li>
+                                <li className="info__item">
+                                    Оценка: -
+                                </li>
+                                <li className="info__item">
+                                    Дата: -
+                                </li>
+                                <li className="info__item">
+                                    Преподователь: Погребников Алексанр Константинович
+                                </li>
+                                <li className="info__item">
+                                    Доп. Информация: -
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li className="record-book__item item_close ">
+                        <h3 className="record-book__title course-work">
+                            Прикладная физическая культуры и спорта
+                        </h3>
+                        <div className="record-book__info">
+                            <ul className="info__list">
+                                <li className="info__item">
+                                    Кол-во часов: 144( з.е.)
+                                </li>
+                                <li className="info__item">
+                                    Оценка: -
+                                </li>
+                                <li className="info__item">
+                                    Дата: -
+                                </li>
+                                <li className="info__item">
+                                    Преподователь: Погребников Алексанр Константинович
+                                </li>
+                                <li className="info__item">
+                                    Доп. Информация: -
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li className="record-book__item item_close ">
+                        <h3 className="record-book__title course-work" >
+                            Программирование на языке Java
+                        </h3>
+                        <div className="record-book__info">
+                            <ul className="info__list">
+                                <li className="info__item">
+                                    Кол-во часов: 144( з.е.)
+                                </li>
+                                <li className="info__item">
+                                    Оценка: -
+                                </li>
+                                <li className="info__item">
+                                    Дата: -
+                                </li>
+                                <li className="info__item">
+                                    Преподователь: Погребников Алексанр Константинович
+                                </li>
+                                <li className="info__item">
+                                    Доп. Информация: -
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li className="record-book__item item_close ">
+                        <h3 className="record-book__title course-project">
+                            Профессионально-орентированный иностранный язык
+                        </h3>
+                        <div className="record-book__info">
+                            <ul className="info__list">
+                                <li className="info__item">
+                                    Кол-во часов: 144( з.е.)
+                                </li>
+                                <li className="info__item">
+                                    Оценка: -
+                                </li>
+                                <li className="info__item">
+                                    Дата: -
+                                </li>
+                                <li className="info__item">
+                                    Преподователь: Погребников Алексанр Константинович
+                                </li>
+                                <li className="info__item">
+                                    Доп. Информация: -
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li className="record-book__item item_close ">
+                        <h3 className="record-book__title course-project">
+                            Программирование на COS в Intersystems Cache
+                        </h3>
+                        <div className="record-book__info">
+                            <ul className="info__list">
+                                <li className="info__item">
+                                    Кол-во часов: 144( з.е.)
+                                </li>
+                                <li className="info__item">
+                                    Оценка: -
+                                </li>
+                                <li className="info__item">
+                                    Дата: -
+                                </li>
+                                <li className="info__item">
+                                    Преподователь: Погребников Алексанр Константинович
+                                </li>
+                                <li className="info__item">
+                                    Доп. Информация: -
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li className="record-book__item item_close ">
+                        <h3 className="record-book__title practice">
+                            Физическая культура и спорт
                         </h3>
                         <div className="record-book__info">
                             <ul className="info__list">

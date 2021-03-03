@@ -1,3 +1,5 @@
+@import "../../styles/variables.scss";
+
 .record-book {
   &__header {
     display: flex;
@@ -43,13 +45,14 @@
   }
 
   &__item {
-
     border: 1px solid rgba(87, 87, 87, 0.5);
+
+    height: auto;
+    transition: 1s all ease;
   }
 
   &__title {
-    padding: 0 5px 0 5px;
-
+    padding: 0 5px;
     display: flex;
     align-items: center;
     font-family: Cera Pro;
@@ -60,7 +63,7 @@
 
     color: #222322;
 
-    height: 70px;
+    height: 90px;
     overflow: hidden;
 
     border: 1px solid rgba(87, 87, 87, 0.5);
@@ -78,7 +81,7 @@
         padding: 0 5px 0 5px;
         margin: 0;
       }
-      
+
       &__item {
 
         font-family: Cera Pro;
@@ -97,4 +100,31 @@
     }
 
   }
+}
+
+.item_close {
+    height: 90px;
+    overflow: hidden;
+    transition: 1s all ease;
+}
+
+.item_open {
+    height: auto;
+    overflow: visible;
+}
+
+.exam {
+    background-color: $exam;
+}
+.offset {
+    background-color: $offset;
+}
+.course-work{
+    background-color: $course-work;
+}
+.course-project{
+    background-color: $course-project;
+}
+.practice{
+    background-color: $practice;
 }
