@@ -5,7 +5,7 @@ import '../../styles/reprise.scss'
 
 import { Header } from '../Header';
 
-function RecordBookHeader() {
+export function RecordBookHeader() {
     return (
         <>
             <header className="record-book__header container">
@@ -90,6 +90,6 @@ export const RecordBook = () => {
             </h1>
             <RecordBookHeader />
             <RecordBookFragments pageWidth={document.documentElement.scrollWidth} />
-        </>
+        </> 
     )
 }

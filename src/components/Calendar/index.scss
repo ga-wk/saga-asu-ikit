@@ -1,0 +1,52 @@
+#app-calendar {
+    // display: grid;
+    // grid-template-columns: repeat(7, 1fr);
+    // grid-template-rows: repeat(5, 1fr);
+    // height: 52px;
+    // width: 100px;
+
+    display: flex;
+    width: 870px;
+}
+
+table {
+    width: 100%;
+}
+
+table tr {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.app-calendar__week {
+    
+}
+
+.app-calendar__week th {
+    text-align: center;
+
+    width: 120px;
+    height: 52px;
+
+    cursor: pointer;
+}
+
+.app-calendar__days th {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 120px;
+    height: 52px;
+
+    margin-right: 5px;
+    margin-bottom: 5px;
+
+    background-color: #70AEDE;
+
+    cursor: pointer;
+}
+
+th:last-child {
+    margin-right: 0;
+}
