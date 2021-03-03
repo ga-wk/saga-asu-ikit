@@ -10,20 +10,16 @@ function clickProfileLabel(e) {
     const input = profileInfoItem.querySelector('.profile-info__input')
     const desc = profileInfoItem.querySelector('.profile-info__desc')
 
-    console.log(profileInfoItem)
-    console.log(input)
-    console.log(desc)
-
     if (input.classList.contains('profile-info__input--closed')) {
         desc.classList.remove('profile-info__desc--show')
         desc.classList.add('profile-info__desc--hide')
-        // desc.style.display = 'none'
+        
         input.classList.remove('profile-info__input--closed')
         input.classList.add('profile-info__input--opened')
     } else if (input.classList.contains('profile-info__input--opened')) {
         desc.classList.remove('profile-info__desc--hide')
         desc.classList.add('profile-info__desc--show')
-        // desc.style.display = 'block'
+
         input.classList.remove('profile-info__input--opened')
         input.classList.add('profile-info__input--closed')
     }
