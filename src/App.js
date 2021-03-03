@@ -5,6 +5,7 @@ import { Login } from './pages/Login';
 import { HeaderPage } from './pages/HeaderPage'
 import { ProfilePage } from './pages/ProfilePage'
 import { NotificationsPage } from './pages/NotificationsPage'
+import { RecordBookPage } from './pages/RecordBookPage'
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
           <Route path="/header" exact component={HeaderPage}/>
           <Route path="/profile" exact component={ProfilePage}/>
           <Route path="/notifications" exact component={NotificationsPage}/>
+          <Route path="/recordbook" exact component={RecordBookPage}/>
         </Switch>
       </div>
     </BrowserRouter>
