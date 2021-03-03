@@ -53,6 +53,7 @@
 
   &__title {
     padding: 0 5px;
+
     display: flex;
     align-items: center;
     font-family: Cera Pro;
@@ -92,7 +93,7 @@
 
         display: flex;
         align-items: center;
-        
+
         color: #575757;
 
         padding: 10px 0 10px 0;
@@ -100,31 +101,107 @@
     }
 
   }
+
+  .table {
+    margin-top: 20px;
+
+    &__header:not(:first-child) {
+      text-align: center;
+
+
+    }
+
+    &__header-item,
+    &__body-item {
+      font-family: Cera Pro;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 23px;
+      color: #000000;
+
+    }
+
+  }
+
+  .helper__list {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+
+    padding-left: 0;
+  }
+
+  .helper__item {
+    width: 90px;
+    height: 52px;
+
+    border: 1px solid rgba(87, 87, 87, 0.5);
+    box-sizing: border-box;
+
+    font-family: DIN Pro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    color: #222322;
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .record-book {
+    &__helper {
+      display: none;
+    }
+  }
+
+  @media (min-width: $desktop-width) {
+    .record-book {
+      &__title {
+        height: 50px;
+      }
+  
+      .item_close {
+        height: 50px;
+        overflow: hidden;
+        transition: 1s all ease;
+      }
+    }
+}
 }
 
 .item_close {
-    height: 90px;
-    overflow: hidden;
-    transition: 1s all ease;
+  height: 80px;
+  overflow: hidden;
+  transition: 1s all ease;
 }
 
 .item_open {
-    height: auto;
-    overflow: visible;
+  height: auto;
+  overflow: visible;
 }
 
 .exam {
-    background-color: $exam;
+  background-color: $exam;
 }
+
 .offset {
-    background-color: $offset;
+  background-color: $offset;
 }
-.course-work{
-    background-color: $course-work;
+
+.course-work {
+  background-color: $course-work;
 }
-.course-project{
-    background-color: $course-project;
+
+.course-project {
+  background-color: $course-project;
 }
-.practice{
-    background-color: $practice;
+
+.practice {
+  background-color: $practice;
 }
