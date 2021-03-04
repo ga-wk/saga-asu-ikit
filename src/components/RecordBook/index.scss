@@ -107,8 +107,6 @@
 
     &__header:not(:first-child) {
       text-align: center;
-
-
     }
 
     &__header-item,
@@ -157,6 +155,15 @@
   .record-book {
     &__helper {
       display: none;
+    }
+    &__title {
+      height: 50px;
+    }
+
+    .item_close {
+      height: 50px;
+      overflow: hidden;
+      transition: 1s all ease;
     }
   }
 
