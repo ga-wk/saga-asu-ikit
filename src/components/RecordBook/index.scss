@@ -149,6 +149,17 @@
 
     color: #222322;
   }
+
+  .item_close {
+    height: 80px;
+    overflow: hidden;
+    transition: 1s all ease;
+  }
+
+  .item_open {
+    height: auto;
+    overflow: visible;
+  }
 }
 
 @media (min-width: $tablet-width) {
@@ -156,6 +167,7 @@
     &__helper {
       display: none;
     }
+
     &__title {
       height: 50px;
     }
@@ -172,26 +184,20 @@
       &__title {
         height: 50px;
       }
-  
+
       .item_close {
         height: 50px;
         overflow: hidden;
         transition: 1s all ease;
       }
     }
-}
+
+
+  }
+
 }
 
-.item_close {
-  height: 80px;
-  overflow: hidden;
-  transition: 1s all ease;
-}
 
-.item_open {
-  height: auto;
-  overflow: visible;
-}
 
 .exam {
   background-color: $exam;
