@@ -19,9 +19,9 @@
 
     height: auto;
     transition: 1s;
-    
-    &:hover{
-        border: 1px solid #f28f1b;
+
+    &:hover {
+      border: 1px solid #f28f1b;
     }
   }
 
@@ -78,6 +78,7 @@
 
         text-align: left;
         padding: 5px;
+
         &:hover,
         &:focus,
         &:target {
@@ -132,20 +133,19 @@
     }
   }
 
-}
+  .item_close {
+    height: 40px;
+    overflow: hidden;
 
-.item_close {
-  height: 40px;
-  overflow: hidden;
-
-  .btn {
+    .btn {
       display: none;
+    }
   }
-}
 
-.item_open {
-  height: auto;
-  overflow: visible;
+  .item_open {
+    height: auto;
+    overflow: visible;
+  }
 }
 
 .btn {

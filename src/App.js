@@ -8,19 +8,20 @@ import { NotificationsPage } from './pages/NotificationsPage'
 import { RecordBookPage } from './pages/RecordBookPage'
 import { EventsCalendarPage } from './pages/EventsCalendarPage'
 import { EventsCalendar } from './components/EventsCalendar';
-
+import { ListOfOrdersPage} from './pages/ListOfOrdersPage'
 export default function App() {
   return (
     <BrowserRouter>
       <div className="app">
         <Switch>
-          <Route path="/" exact component={Home}/>
+          {/* <Route path="/" exact component={Home}/> */}
           <Route path="/login" exact component={Login}/>
-          <Route path="/header" exact component={HeaderPage}/>
-          <Route path="/profile" exact component={ProfilePage}/>
+          {/* <Route path="/" exact component={HeaderPage}/> */}
+          <Route path="/" exact component={ProfilePage}/>
           <Route path="/notifications" exact component={NotificationsPage}/>
           <Route path="/recordbook" exact component={RecordBookPage}/>
           <Route path="/eventscalendar" exact component={ EventsCalendarPage }/>
+          <Route path="/listoforders" exact component={ ListOfOrdersPage }/>
         </Switch>
       </div>
     </BrowserRouter>
