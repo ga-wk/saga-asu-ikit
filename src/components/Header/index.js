@@ -102,14 +102,14 @@ export const Header = () => (
     </div>
     <aside className="main-header__sidebar sidebar sidebar--closed">
       <ul className="sidebar__list">
-        <li className="sidebar__item"><a className="sidebar__link" href="/profile">Профиль</a></li>
+        <li className="sidebar__item"><a className="sidebar__link" href="/">Профиль</a></li>
         <li className="sidebar__item"><a className="sidebar__link" href="/notifications">Уведомления</a></li>
         <li className="sidebar__item sidebar__subnav sidebar__item--closed">
         <a className="sidebar__link sidebar__sublink" href="#" onClick={sublistClick}>Студент</a>
           <ul className="sidebar__sublist">
             <li className="sidebar__item sidebar__subitem"><a className="sidebar__link" href="/recordbook">Зачетная книжка</a></li>
             <li className="sidebar__item sidebar__subitem"><a className="sidebar__link" href="/eventscalendar">Календарь событий</a></li>
-            <li className="sidebar__item sidebar__subitem"><a className="sidebar__link" href="#">Заказ справок</a></li>
+            <li className="sidebar__item sidebar__subitem"><a className="sidebar__link" href="/ordering">Заказ справок</a></li>
             <li className="sidebar__item sidebar__subitem"><a className="sidebar__link" href="#">Опросник</a></li>
             <li className="sidebar__item sidebar__subitem"><a className="sidebar__link" href="/listoforders">Список приказов</a></li>
             <li className="sidebar__item sidebar__subitem"><a className="sidebar__link" href="#">Расписание студентов</a></li>

@@ -1,0 +1,80 @@
+@import '../../styles/variables.scss';
+
+.ordering-container {
+  width: 330px;
+
+  margin: 0 auto;
+}
+
+.ordering-container .main-title {
+  margin-left: 0;
+}
+
+.subtitle {
+  margin-top: 15px;
+
+  font-size: 24px;
+
+  color: #575757
+}
+
+.ordering-container label {
+  margin-top: 5px;
+  display: block;
+  font-size: 20px;
+  color: #222322;
+  font-weight: 500;
+}
+
+.ordering-input {
+  width: 85px;
+  height: 50px;
+
+  background: rgba(87, 87, 87, 0.1);
+  border: 1px solid rgba(87, 87, 87, 0.5);
+  box-sizing: border-box;
+  border-radius: 5px;
+
+  font-family: Cera Pro;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 25px;
+
+  color: #222322;
+
+  transition: 1s all ease;
+}
+
+.ordering-checkbox-paragraph {
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+}
+
+label.ordering-checkbox-label {
+  display: inline-block;
+  margin-right: 25px;
+}
+
+.ordering-checkbox {
+  width: 45px;
+  height: 45px;
+}
+
+.ordering__desc {
+  font-size: 20px;
+  font-weight: 500;
+  color: #e61111;
+}
+
+.ordering-container .buttons-wrapper {
+  width: 250px;
+
+  margin: 0 auto;
+}
+
+.ordering-button {
+  height: 50px;
+}
