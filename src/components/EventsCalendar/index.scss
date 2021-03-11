@@ -123,6 +123,7 @@
 
 .events-calendar__info {
     display: none;
+    margin-bottom: 20px;
 }
 
 .show {
@@ -152,7 +153,7 @@
 .lessons__item p {
     margin: 0;
     padding: 0;
-    
+
 }
 
 .events-calendar__wrapper {
@@ -222,7 +223,7 @@
 
 @media (min-width: $desktop-width) {
     .events-calendar {
-        width: 1140px;
+        width: 1040px;
     }
 
     .events-calendar__calendar {
