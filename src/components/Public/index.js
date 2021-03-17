@@ -27,7 +27,7 @@ export const Semester = () => (
 export const Searcher = () => (
     <div className="searcher__header container">
         <div className="searcher__input">
-            <input className="input" type="text"></input>
+            <input className="input" type="text" placeholder="Поиск..."></input>
             <button className="searcher__btn">
                 <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0)">

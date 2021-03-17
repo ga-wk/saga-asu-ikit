@@ -4,7 +4,7 @@
   &__header {
     display: flex;
     justify-content: space-between;
-
+    margin-top: 10px;
     .semester {
       &__list {
         width: 240px;
@@ -25,19 +25,64 @@
 
         transition: 1s all ease;
       }
+
       &__helper {
         width: 50px;
         height: 50px;
-  
+
         border: 1px solid #57575780;
         border-radius: 5px;
       }
     }
+
     @media (min-width: $tablet-width) {
       .semester {
         &__helper {
           display: none;
         }
+      }
+    }
+  }
+}
+
+.searcher {
+  &__header {
+    .searcher {
+      &__input {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+
+        margin-top: 10px;
+
+        .input {
+          padding: 0;
+          min-width: 240px;
+          height: 50px;
+
+          background: rgba(87, 87, 87, 0.1);
+          border: 1px solid rgba(87, 87, 87, 0.5);
+          box-sizing: border-box;
+          border-radius: 5px;
+
+          font-family: Cera Pro;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 20px;
+          line-height: 25px;
+
+          color: #222322;
+
+          transition: 1s all ease;
+        }
+      }
+
+      &__btn {
+        width: 50px;
+        height: 50px;
+
+        border: 1px solid #57575780;
+        border-radius: 5px;
       }
     }
   }
