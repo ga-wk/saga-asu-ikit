@@ -28,7 +28,7 @@
 }
 
 .main-header {
-  min-width: 320px;
+  max-width: 100%;
   margin: 0 auto;
   position: relative;
 }
@@ -412,9 +412,7 @@
 
 
 @media(min-width: 768px) {
-  .main-header {
-    max-width: 768px;
-  }
+  
 
   .main-header__logo-image {
     position: relative;
@@ -429,9 +427,7 @@
 }
 
 @media(min-width: 1024px) {
-  .main-header {
-    max-width: 100%;
-  }
+
 
   .main-header__logo-image {
     position: relative;
