@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import {Header} from '../Header/index'
-
 import './index.scss'
 
+
 function OrderingHeader() {
+
   return (
       <>
           <header className="record-book__header container" styles={{paddingLeft: 0}}>
@@ -35,28 +36,42 @@ function Ordering() {
         </h1>
         <h2 className="subtitle">Сервис заказа справок</h2>
         <form>
-          <label for="order-list">Вид справки:</label>
+          <label htmlFor="order-list">Вид справки:</label>
           <OrderingHeader/>
-          <label for="order-count">Кол-во:</label>
+          <label htmlFor="order-count">Кол-во:</label>
           <input className="ordering-input" type="text" id="order-count" placeholder="1"/>
           <p className="ordering-checkbox-paragraph">
-            <label className="ordering-checkbox-label" for="official-seal">Наличие гербовой печати:</label>
+            <label className="ordering-checkbox-label" htmlFor="official-seal">Наличие гербовой печати:</label>
             <input type="checkbox" className="ordering-checkbox"/>
           </p>
           <p className="ordering__desc">
           Оповещение на почту не придет, потому что почта не заполнена или отключено уведомление в модуле “Профиль”
           </p>
-          <div class="buttons-wrapper">
+          <div className="buttons-wrapper">
             <button className="ordering-button profile-info__button profile-info__button-material">Заказать</button>
-            <button className="ordering-button profile-info__button profile-info__button-social">История</button>
+            <button className="ordering-button profile-info__button profile-info__button-social">
+              <a href="/ordering/history">История</a></button>
           </div>
         </form>
-
       </div>
-
+      <div className="ordering__big-description">
+          <p>Перед заказом ознакомтесь со сроками выполнения:</p>
+          <ul className="big-description__list">
+            <li>-<b>При наличии гербовой печати</b>,срок выполнения справки будет выполняться в течение 10 рабочих дней, т.к. данный вид справки требует подписи ректора СФУ.</li>
+            <li>-<b>При отсутствии гербобой печати</b>, срок выполнения справки будет выполняться 3 рабочих дня, т.к. данный вид справки требует подписи директора ИКИТ СФУ</li>
+            <li>-<b>Справка в Пенсионный фонд РФ</b>, имеет срок выполнения 10 рабочих дней.</li>
+          </ul>
+          <p>Чтобы заказать справки:</p>
+          <ul className="big-description__list">
+            <li> -<b>для военкомата</b>, обратитесь во второй отдел, ул.Киренского, ауд. Д 511</li>
+            <li>-<b>размере стипендии</b>, обратитесь в стипендиальную группу, пр. Свободный, 79, ауд. 12-13</li>
+          </ul>
+            <p>К сожалению через наш сервис такие виды справот заказать нельзя.</p>
+        </div>
     </>
   )
 }
+
 
 
 

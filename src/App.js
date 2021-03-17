@@ -11,6 +11,7 @@ import { EventsCalendar } from './components/EventsCalendar'
 import { ListOfOrdersPage} from './pages/ListOfOrdersPage'
 import { OrderingPage } from './pages/OrderingPage'
 import { AcademicPlanPage } from './pages/AcademicPlanPage'
+import History from './components/Ordering/History';
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
           <Route path="/listoforders" exact component={ ListOfOrdersPage }/>
           <Route path="/ordering" exact component={ OrderingPage }/>
           <Route path="/academicplan" exact component={ AcademicPlanPage }/>
+          <Route path="/ordering/history" exact component={ History }/>
         </Switch>
       </div>
     </BrowserRouter>
