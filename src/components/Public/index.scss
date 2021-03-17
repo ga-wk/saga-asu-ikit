@@ -5,6 +5,7 @@
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
+
     .semester {
       &__list {
         width: 240px;
@@ -52,9 +53,8 @@
         display: flex;
         flex-wrap: nowrap;
         align-items: center;
-
+        
         margin-top: 10px;
-
         .input {
           padding: 0;
           min-width: 240px;
@@ -86,4 +86,29 @@
       }
     }
   }
+}
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  font-family: Cera Pro;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 25px;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
 }

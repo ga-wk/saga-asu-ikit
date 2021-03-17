@@ -63,6 +63,10 @@
       max-width: $desktop-width;
     }
   }
+  
+  .center {
+    text-align: center;
+  }
 
   .exam {
     background-color: $exam;
@@ -82,5 +86,17 @@
   
   .practice {
     background-color: $practice;
+  }
+  
+  .close-rgba {
+    background-color: $close-rgba;
+  }
+  
+  .open-rgba {
+    background-color: $open-rgba;
+  }
+  
+  .unknown-rgba {
+    background-color: $unknown-rgba;
   }
   

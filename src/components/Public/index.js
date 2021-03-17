@@ -43,3 +43,17 @@ export const Searcher = () => (
         </div>
     </div>
 );
+export const Pagination = () => (
+    <div className="center">
+        <div className="pagination">
+        <a href="#">&laquo;</a>
+        <a href="#">1</a>
+        <a class="" href="#">2</a>
+        <a href="#">3</a>
+        <a>...</a>
+        <a href="#">12</a>
+        <a href="#">&raquo;</a>
+    </div>
+    </div>
+    
+);
