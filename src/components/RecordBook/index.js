@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import './index.scss'
 import '../../styles/reprise.scss'
 
-import { Semester } from '../PublicComponent/index.js'
+import { Semester } from '../Public'
 import { Header } from '../Header';
 
 function itemClick(e) {
@@ -20,7 +20,6 @@ function itemClick(e) {
 function MobileFragment() {
     return (
         <>
-
             <ul className="record-book__list " onClick={itemClick}>
                 <li className="record-book__item item_close ">
                     <h3 className="record-book__title exam">
