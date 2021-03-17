@@ -1,0 +1,127 @@
+.date-choice {
+  height: 48px;
+  width: 268px;
+
+  padding-left: 15px;
+  padding-right: 10px;
+
+  color: #000;
+  background-color: rgb(238,238,238);
+  border: none;
+}
+
+.week__day-schedule {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.week__day-schedule li {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.schedule-calendar  {
+  width: 330px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.week__day-schedule p {
+  margin: 0;
+  padding: 0;
+}
+
+// .schedule-calendar .week__item {
+//   width: 330px;
+// }
+
+.schedule-calendar .week__day {
+  background-color: rgb(238,238,238);
+  color: #000;
+}
+
+.schedule-header {
+  width: 700px;
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.schedule-header__item {
+  margin-bottom: 5px;
+  margin-right: 15px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.schedule-header__item b {
+  display: inline-block;
+  margin-right: 5px;
+
+  background-color: #eeeeee;
+  padding: 5px;
+}
+
+.reset-date {
+  margin-left: 10px;
+  border: none;
+  padding: 5px;
+}
+
+.schedule-main-table {
+  margin-top: 10px;
+  width: 100%;
+
+  border-collapse: collapse;
+}
+
+.schedule-main-table__th {
+  color: #fff;
+  background-color: #5e6a84;
+  text-align: center;
+
+  border-right: 1px solid #fff;
+
+  padding: 5px;
+
+
+}
+
+
+.schedule-main-table__td--free{
+  background-color: #73ff91;
+}
+
+.schedule-current-lesson p {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 5px;
+
+  &:first-child {
+    font-weight: 500;
+  }
+}
+
+.schedule-main-table__td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  min-height: 45px;
+  text-align: center;
+
+  border: 1px solid #eee;
+
+
+}
+
+.schedule-main-table__tr--even {
+  background-color: #f4f4f4;
+}
