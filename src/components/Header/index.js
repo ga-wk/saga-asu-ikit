@@ -113,7 +113,7 @@ export const Header = () => (
             <li className="sidebar__item sidebar__subitem"><a className="sidebar__link" href="#">Опросник</a></li>
             <li className="sidebar__item sidebar__subitem"><a className="sidebar__link" href="/listoforders">Список приказов</a></li>
             <li className="sidebar__item sidebar__subitem"><a className="sidebar__link" href="#">Расписание студентов</a></li>
-            <li className="sidebar__item sidebar__subitem"><a className="sidebar__link" href="#">Учебный план</a></li>
+            <li className="sidebar__item sidebar__subitem"><a className="sidebar__link" href="/academicplan">Учебный план</a></li>
           </ul>
         </li>
       </ul>

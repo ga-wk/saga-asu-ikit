@@ -1,16 +1,11 @@
 import React from 'react'
 
-import { RecordBookHeader } from '../RecordBook'
+import {Semester} from '../Public'
 import { Header } from '../Header';
-
-// import Calendar from 'react-calendar';
-// // import 'react-calendar/dist/Calendar.css';
 
 import Calendar from '../Calendar'
 
 import './index.scss'
-
-
 
 function showHideDate(event) {
     const li = event.target.parentElement
@@ -425,7 +420,7 @@ export const EventsCalendar = () => {
             <h1 className="main-title">
                 <a className="main-title__link">Календарь событий</a>
             </h1>
-            <RecordBookHeader/>
+            <Semester />
             <Fragments pageWidth={document.documentElement.scrollWidth} />
         </> 
     )
