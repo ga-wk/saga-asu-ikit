@@ -4,6 +4,7 @@
   width: 330px;
 
   margin: 0 auto;
+  margin-bottom: 30px;
 }
 
 .ordering-container .main-title {
@@ -77,4 +78,59 @@ label.ordering-checkbox-label {
 
 .ordering-button {
   height: 50px;
+}
+
+.ordering-button a {
+  text-decoration: none;
+  font: inherit;
+  color: #000;
+}
+
+.ordering__big-description {
+  display: none;
+
+  margin-top: 15px;
+  margin-left: 50px;
+  margin-right: 50px;
+  font-family: "Cera Pro", Arial, sans-serif;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.big-description__list {
+  list-style: none;
+}
+
+.big-description__list li {
+  margin-bottom: 10px;
+}
+
+.ordering-table {
+  width: 1300px;
+}
+
+@media (min-width: $tablet-width) {
+  .ordering-container {
+    width: 690px;
+  }
+
+  .ordering-container .buttons-wrapper {
+    width: 516px;
+
+    margin: 0 auto;
+  }
+
+  .ordering-container {
+    margin-left: 50px;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .ordering-container .buttons-wrapper {
+    margin: 0;
+  }
+
+  .ordering__big-description {
+    display: block;
+  }
 }
