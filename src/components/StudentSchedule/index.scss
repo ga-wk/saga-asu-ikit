@@ -40,7 +40,30 @@
   background-color: rgb(238,238,238);
   color: #000;
 }
+.schedule-wrapper{
+  .table {
+    margin-top: 20px;
 
+    &__header {
+      text-align: center;
+    }
+
+    &__header-item,
+    &__body-item {
+      font-family: Cera Pro;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 23px;
+      color: #000000;
+
+    }
+
+    &__header-item {
+      font-weight: bold;
+    }
+  }
+}
 .schedule-header {
   width: 700px;
 

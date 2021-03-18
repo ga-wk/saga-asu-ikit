@@ -4,7 +4,7 @@ import './index.scss';
 import '../../styles/reprise.scss';
 
 export const Semester = () => (
-    <div className="semester__header container">
+    <div className="semester__header">
         <div className="semester">
             <select className="semester__list">
                 <option className="semester__item">5 семестр</option>
@@ -25,7 +25,7 @@ export const Semester = () => (
 
 
 export const Searcher = () => (
-    <div className="searcher__header container">
+    <div className="searcher__header">
         <div className="searcher__input">
             <input className="input" type="text" placeholder="Поиск..."></input>
             <button className="searcher__btn">
