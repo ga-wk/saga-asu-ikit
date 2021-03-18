@@ -202,16 +202,16 @@ function DesktopFragment() {
             <button className="reset-date">Вернуться к начальной дате</button>
           </li>
         </ul>
-        <table className="schedule-main-table">
+        <table className="table">
           <tbody>
-            <tr className="schedule-main-table__tr">
-              <th className="schedule-main-table__th">Время</th>
-              <th className="schedule-main-table__th">Понедельник</th>
-              <th className="schedule-main-table__th">Вторник</th>
-              <th className="schedule-main-table__th">Среда</th>
-              <th className="schedule-main-table__th">Четверг</th>
-              <th className="schedule-main-table__th">Пятница</th>
-              <th className="schedule-main-table__th">Суббота</th>
+            <tr className="table__header">
+              <th className="table__header-item">Время</th>
+              <th className="table__header-item">Понедельник</th>
+              <th className="table__header-item">Вторник</th>
+              <th className="table__header-item">Среда</th>
+              <th className="table__header-item">Четверг</th>
+              <th className="table__header-item">Пятница</th>
+              <th className="table__header-item">Суббота</th>
             </tr>
             <tr className="schedule-main-table__tr">
               <td className="schedule-main-table__td">8.30 - 10.05</td>
