@@ -361,13 +361,14 @@ function FilterFragments(props) {
     if (pageWidth <= desktopWidth) {
         return (
             <>
-                <Searcher />
-                <Semester />
+                <Searcher className="container"/>
+                <Semester className="container"/>
             </>
         )
     } else {
         return (
             <>
+
                 <p className="filter__info">
                     Группа:КИ18-16Б Код специальность:09.03.04 <br></br>
                     Специальность: Програмная инженерия

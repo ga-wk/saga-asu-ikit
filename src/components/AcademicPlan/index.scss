@@ -169,25 +169,47 @@
 }
 
 .filter {
-  max-width: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__info,
+  &__check {
+    
+
+    font-family: Cera Pro;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 23px;
+    color: #000000;
+  }
+
+  &__info,&__check>p{
+    margin: 0;
+  }
 }
 
 @media(min-width: 768px) {
   .filter {
+    // display: flex;
+    // justify-content: center;
+    // 
+    // .semester__header{
+    //     max-width: 300px;
+    //     .semester__list{
+    //       min-width: 300px; 
+    //     }
+    // }
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .filter {
     display: flex;
-    justify-content: center;
+
     .searcher__header {
-        max-width: 370px;
-        .input{
-            min-width: 320px;
-        }
-    }
-    .semester__header{
-        max-width: 300px;
-        .semester__list{
-            min-width: 300px; 
-        }
+      margin: 0;
+      max-width: 320px7;
     }
   }
-
 }
