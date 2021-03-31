@@ -7,20 +7,29 @@
 
   width: 100%;
 }
+.main-header__logo-block {
+  display: flex;
+  align-items: center;
 
+  width: 100%;
+}
 .main-header__logo-image {
-  display: block;
   position: relative;
 
-    margin: 0 auto;
-  // margin-right: 18px;
+  margin: 0 auto;
 }
+.main-header__logo-text {
+  font-size: 48px;
+  line-height: 60px;
+  letter-spacing: 0.05em;
 
+  color: #222322;
+}
 .main-header__inner-wrapper {
   display: flex;
   justify-content: space-between;
 
-  margin-left: 100px;
+  margin-left: 70px;
 
   display: flex;
   flex-direction: row;
@@ -74,7 +83,7 @@
 
   text-decoration: none;
 
-  border-bottom: 1px solid #F28F1B;
+  border-bottom: 1px solid #f28f1b;
 }
 
 .sidebar__link:hover,
@@ -82,13 +91,10 @@
 .sidebar__link:focus {
   color: #222322;
   text-decoration: none;
-  background-color: #F28F1B;
+  background-color: #f28f1b;
 }
 
-
-
 .sidebar__item {
-  // width: 207px;
   margin-top: 10px;
 }
 
@@ -96,7 +102,7 @@
   position: relative;
 
   color: #222322;
-  background-color: #F28F1B;
+  background-color: #f28f1b;
 
   &::after {
     content: "";
@@ -165,7 +171,6 @@
   display: none;
 }
 
-
 .sidebar--closed .sidebar__list {
   display: none;
 }
@@ -173,7 +178,7 @@
 .help__list {
   position: absolute;
   z-index: 1;
-  
+
   top: 71px;
   right: 0;
 
@@ -207,7 +212,7 @@
 .help__link:hover,
 .help__link:active,
 .help__link:focus {
-  color: #F28F1B;
+  color: #f28f1b;
   text-decoration: none;
 }
 
@@ -220,8 +225,6 @@
   align-items: center;
   flex-direction: column;
 
-  // position: relative;
-
   width: 160px;
   height: 70px;
 
@@ -233,72 +236,30 @@
   border-left: 2px solid #000000;
 
   margin-left: 18px;
-  
+
   &:active,
   &:hover {
     cursor: pointer;
   }
-
-  // &::after {
-  //   content: "";
-
-  //   position: absolute;
-  //   width: 40px;
-  //   height: 40px;
-
-  //   top: 15px;
-  //   right: 45px;
-
-  //   background-image: url("../../img/profile.svg");
-  //   background-position: 0 0;
-  //   background-repeat: no-repeat;
-  // }
 }
-
-
 
 .main-header__student-name {
   order: 1;
   display: block;
-  font-family: 'Cera Pro', 'Arial', sans-serif;
+  font-family: "Cera Pro", "Arial", sans-serif;
   font-weight: 500;
   font-size: 14px;
   line-height: 14px;
 
   color: #575757;
-
-  // &::after {
-  //   content: "";
-
-  //   position: absolute;
-  //   width: 40px;
-  //   height: 40px;
-
-  //   top: 15px;
-  //   right: 40px;
-
-  //   background-image: url("../../img/profile.svg");
-  //   background-position: 0 0;
-  //   background-repeat: no-repeat;
-  // }
-
 }
 
 .main-header__student-icon svg {
   width: 20px;
   height: 20px;
-
-  
-  // width: 40px;
-  // height: 40px;
-
-  // background-image: url("../../img/profile.svg");
-  // background-position: 0 0;
-  // background-repeat: no-repeat;
 }
 
 .help__toggle {
-
   position: absolute;
   top: 30px;
   right: 12px;
@@ -319,7 +280,7 @@
 
   z-index: 1;
 
-  &:focus{
+  &:focus {
     outline: none;
   }
 }
@@ -330,7 +291,6 @@
   background-repeat: no-repeat;
 
   transform: rotate(0deg);
-
 }
 
 .sidebar__toggle {
@@ -343,14 +303,14 @@
   width: 70px;
   height: 70px;
 
-  background-color: #F28F1B;
+  background-color: #f28f1b;
   border: none;
 
   cursor: pointer;
 
   z-index: 1;
 
-  &:focus{
+  &:focus {
     outline: none;
   }
 }
@@ -366,14 +326,13 @@
   height: 4px;
 
   background-color: #222232;
-  
+
   box-shadow: 0 8px 0 0 #222232, 0 16px 0 0 #222232;
 }
 
 .sidebar--closed .sidebar__toggle:active::before {
   background-color: rgba(255, 255, 255, 0.3);
-  box-shadow:
-    0 8px 0 0 rgba(255, 255, 255, 0.3),
+  box-shadow: 0 8px 0 0 rgba(255, 255, 255, 0.3),
     0 16px 0 0 rgba(255, 255, 255, 0.3);
 }
 
@@ -410,28 +369,30 @@
   }
 }
 
-
-@media(min-width: 768px) {
-  
-
+@media (min-width: 855px) {
   .main-header__logo-image {
-    position: relative;
-
-    margin: 0 auto;
+    margin: 0 20px;
   }
 
   .main-header__student-icon svg {
     width: 40px;
     height: 40px;
   }
-}
+  .main-header__profile {
+    flex-direction: row;
+    align-items: center;
+    width: 250px;
+    padding: 0;
+    margin: 0;
+  }
+  .main-header__student-name {
+    order: -1;
 
-@media(min-width: 1024px) {
+    font-size: 18px;
+    line-height: 21px;
 
+    color: #264653;
 
-  .main-header__logo-image {
-    position: relative;
-
-    margin: 0 auto;
+    margin: 0 5px;
   }
 }
