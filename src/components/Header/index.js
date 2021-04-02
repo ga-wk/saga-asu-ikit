@@ -72,7 +72,7 @@ function helpClick(e) {
 function isWidth(minWidth, tag1, tag2) {
   return document.documentElement.scrollWidth > minWidth ? tag1 : tag2;
 }
-export const Header = () => (
+export const Header = (props) => (
   <header className="main-header ">
     <div className="main-header__top">
       <div className="main-header__inner-wrapper">
@@ -93,7 +93,7 @@ export const Header = () => (
 
         <div className="main-header__profile" onClick={helpClick}>
           <span className="main-header__student-name">
-            {isWidth(855, "Виктор В. В.", "Виктор")}
+            {isWidth(855, `${props.fullName}`, `${props.firstName}`)}
           </span>
           <span className="main-header__student-icon">
             <svg
