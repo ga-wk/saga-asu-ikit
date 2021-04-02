@@ -34,7 +34,7 @@ export const Profile = () => {
   const [isLoaded, setIsLoaded] = React.useState(false);
   const [user, setUser] = React.useState(null);
 
-  const url = "http://193.218.136.174:8080/cabinet/rest/student/get"
+  const url = "http://193.218.136.174:8080/cabinet/rest/student/get";
 
   const data = {
     text: "",
@@ -42,7 +42,7 @@ export const Profile = () => {
   };
 
   React.useEffect(() => {
-    const promise = postData(url ,data);
+    const promise = postData(url, data);
     if (promise !== undefined) {
       promise
         .then((res) => res.json())
@@ -68,7 +68,10 @@ export const Profile = () => {
   } else {
     return (
       <>
-        <Header firstName={`${user.student.surname}`} fullName={`${user.student.surname} ${user.student.name[0]}. ${user.student.patronymic[0]}.`}/>
+        <Header
+          firstName={`${user.student.surname}`}
+          fullName={`${user.student.surname} ${user.student.name[0]}. ${user.student.patronymic[0]}.`}
+        />
         <h1 className="main-title">
           <a className="main-title__link">Профиль</a>
         </h1>
@@ -79,7 +82,7 @@ export const Profile = () => {
               <li className="profile-info__item">
                 <label
                   className="profile-info__label"
-                  for="birthday"
+                  htmlFor="birthday"
                   onClick={clickProfileLabel}
                 >
                   День Рождения
@@ -100,7 +103,7 @@ export const Profile = () => {
               <li className="profile-info__item">
                 <label
                   className="profile-info__label"
-                  for="mail"
+                  htmlFor="email"
                   onClick={clickProfileLabel}
                 >
                   Email
@@ -112,8 +115,8 @@ export const Profile = () => {
                   <input
                     className="profile-info__input profile-info__input--email profile-info__input--closed"
                     type="text"
-                    id="mail"
-                    name="mail"
+                    id="email"
+                    name="email"
                     value={`${user.student.email}`}
                   />
                 </div>
@@ -121,22 +124,28 @@ export const Profile = () => {
               <li className="profile-info__item">
                 <label
                   className="profile-info__label"
-                  for="mail-send"
+                  htmlFor="mail-send"
                   onClick={clickProfileLabel}
                 >
                   Уведомления на почту
                 </label>
                 <div className="profile-info__inner-wrapper">
                   <span className="profile-info__desc profile-info__desc--show">
-                    {user.student.notification? "Отправлять" : "Не отправлять "}
+                    {user.student.notification
+                      ? "Отправлять"
+                      : "Не отправлять "}
                   </span>
                   <select
                     className="profile-info__input profile-info__input--email-send profile-info__input--closed"
                     id="mail-send"
                     name="mail-send"
-                    defaultValue={user.student.notification? "Отправлять" : "Не отправлять "}
+                    defaultValue={
+                      user.student.notification
+                        ? "Отправлять"
+                        : "Не отправлять "
+                    }
                   >
-                    <option  value="Отправлять">Отправлять</option>
+                    <option value="Отправлять">Отправлять</option>
                     <option value="Не отправлять">Не отправлять</option>
                   </select>
                 </div>
@@ -144,7 +153,7 @@ export const Profile = () => {
               <li className="profile-info__item">
                 <label
                   className="profile-info__label"
-                  for="start-page"
+                  htmlFor="start-page"
                   onClick={clickProfileLabel}
                 >
                   Начальная страница
@@ -165,7 +174,7 @@ export const Profile = () => {
                 </div>
               </li>
             </ul>
-            <div class="buttons-wrapper">
+            <div className="buttons-wrapper">
               <button className="profile-info__button profile-info__button-material">
                 Мат. помощь
               </button>
