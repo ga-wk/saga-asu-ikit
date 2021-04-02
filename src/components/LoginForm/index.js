@@ -1,7 +1,8 @@
 import React, {useRef} from 'react';
-
 import './index.scss';
 import { sfuLoginImageTablet, sfuLoginImageMobile } from "../../assets/images";
+
+// import axios from 'axios'
 
 
 export function LoginForm() {
@@ -12,31 +13,33 @@ export function LoginForm() {
   async function handleSubmit(e) {
     e.preventDefault()
 
-    console.log(loginRef.current.value)
-    console.log(passwordRef.current.value)
-
     const url = "http://193.218.136.174:8080/cabinet/rest/auth/login"
-    const url2 = "https://jsonplaceholder.typicode.com/users"
 
-    let query = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: {
-        "appToken": "4xNEa3sFzQ",
-        "password": passwordRef.current.value,
-        "username": loginRef.current.value,
-      }
-    })
-
-    if (query.ok) {
-      let json = await query.json()
-      console.log(json)
-    } else {
-      console.log('error', query.status)
+    async function postData(url = '', data = {}) {
+      const response = await fetch(url, {
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify(data)
+      });
+      return await response.json()
     }
 
+    let bodyPost = {
+      "username": loginRef.current.value,
+      "password": passwordRef.current.value,
+      "appToken": "4xNEa3sFzQ"
+    };
+
+    postData(url, bodyPost).then((data) => {
+      console.log(data)
+    })
   }
 
   return (
