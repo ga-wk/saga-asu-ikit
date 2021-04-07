@@ -3,6 +3,7 @@ import React from "react";
 import "./index.scss";
 
 import { sfuLogoHeaderMobile } from "../../assets/images";
+import { Cookie } from "../../libs/cookie.js";
 
 function closedAll() {
   const sidebar = document.querySelector(".main-header__sidebar");
@@ -61,18 +62,14 @@ function helpClick(e) {
   }
 }
 
-// function hideModal(e) {
-//   const sidebar = document.querySelector('.main-header__sidebar')
-
-//   if (sidebar.classList.contains('sidebar--opened')) {
-//     sidebar.classList.remove('sidebar--opened')
-//     sidebar.classList.add('sidebar--closed')
-//   }
-// }
+function logOut() {
+  Cookie.deleteCookie("usertoken");
+  document.location.reload();
+}
 function isWidth(minWidth, tag1, tag2) {
   return document.documentElement.scrollWidth > minWidth ? tag1 : tag2;
 }
-export const Header = () => (
+export const Header = (props) => (
   <header className="main-header ">
     <div className="main-header__top">
       <div className="main-header__inner-wrapper">
@@ -93,7 +90,7 @@ export const Header = () => (
 
         <div className="main-header__profile" onClick={helpClick}>
           <span className="main-header__student-name">
-            {isWidth(855, "Виктор В. В.", "Виктор")}
+            {isWidth(855, `${props.fullName}`, `${props.firstName}`)}
           </span>
           <span className="main-header__student-icon">
             <svg
@@ -112,19 +109,15 @@ export const Header = () => (
           <div className="main-header__help help help--closed">
             <ul className="help__list">
               <li className="help__item">
-                <a className="help__link" href="#">
-                  Помощь
-                </a>
+                <button className="help__link">Помощь</button>
               </li>
               <li className="help__item">
-                <a className="help__link" href="#">
-                  Сообщить о проблеме
-                </a>
+                <button className="help__link">Сообщить о проблеме</button>
               </li>
               <li className="help__item">
-                <a className="help__link" href="#">
+                <button className="help__link" onClick={logOut}>
                   Выход
-                </a>
+                </button>
               </li>
             </ul>
             <button className="help__toggle">Закрыть</button>
@@ -145,13 +138,13 @@ export const Header = () => (
           </a>
         </li>
         <li className="sidebar__item sidebar__subnav sidebar__item--closed">
-          <a
+          <button
             className="sidebar__link sidebar__sublink"
             href="#"
             onClick={sublistClick}
           >
             Студент
-          </a>
+          </button>
           <ul className="sidebar__sublist">
             <li className="sidebar__item sidebar__subitem">
               <a className="sidebar__link" href="/recordbook">

@@ -97,7 +97,12 @@
 .sidebar__item {
   margin-top: 10px;
 }
-
+.sidebar__sublink{
+  // width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+}
 .sidebar__item--opened .sidebar__sublink {
   position: relative;
 
@@ -202,6 +207,12 @@
 }
 
 .help__link {
+  width: 100%;
+  border: none;
+  background: none;
+
+  text-align: left;
+
   font-size: 20px;
   line-height: 20px;
 
