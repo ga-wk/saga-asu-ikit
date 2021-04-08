@@ -1,7 +1,7 @@
 "use strict";
 
-export async function postData(url = "", data = {}) {
-  const response = await fetch(url, {
+export  function postData(url = "", data = {}) {
+  const response =  fetch(url, {
     method: "POST",
     mode: "cors",
     cache: "no-cache",
@@ -13,5 +13,5 @@ export async function postData(url = "", data = {}) {
     referrerPolicy: "no-referrer",
     body: JSON.stringify(data),
   });
-  return await response;
+  return  response;
 }

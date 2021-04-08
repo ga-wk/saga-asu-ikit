@@ -3,6 +3,7 @@ import "./index.scss";
 import { sfuLoginImageTablet, sfuLoginImageMobile } from "../../assets/images";
 import { Cookie } from "../../libs/cookie.js";
 import { postData } from "../../libs/requests";
+import { Redirect } from "react-router";
 
 export function LoginForm() {
   let loginRef = useRef();
@@ -47,8 +48,8 @@ export function LoginForm() {
     });
   }
 
-  function showAlert(message, status) {}
-
+  if (Cookie.getCookie("usertoken")) return <Redirect to="/" /> ;
+  
   return (
     <section className="login">
       {/* <div className="login__background"></div> */}
@@ -80,7 +81,7 @@ export function LoginForm() {
             <p className="login__text">Вход в личный кабинет:</p>
             {loginError && (
               <div class="alert alert-danger" role="alert">
-                { loginMessage }
+                {loginMessage}
               </div>
             )}
             <p className="login__field login__login">
