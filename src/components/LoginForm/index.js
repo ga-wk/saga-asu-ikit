@@ -8,6 +8,9 @@ export function LoginForm() {
   let loginRef = useRef();
   let passwordRef = useRef();
 
+  let [loginMessage, setLoginMessage] = React.useState("");
+  let [loginError, setLoginError] = React.useState(false);
+
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -20,14 +23,31 @@ export function LoginForm() {
     };
 
     postData(url, bodyPost).then((res) => {
-      res.json().then((data) => {
-        Cookie.setCookie("usertoken", data.usertoken, {
-          "max-age": `${new Date(Date.now() + 8 * 3600000)}`,
+      res
+        .json()
+        .then((data) => {
+          console.log(data);
+
+          if (data.usertoken) {
+            Cookie.setCookie("usertoken", data.usertoken, {
+              "max-age": `${new Date(Date.now() + 8 * 3600000)}`,
+            });
+            document.location.href = "/";
+            return;
+          }
+
+          if (data.msg) {
+            setLoginMessage(data.msg);
+            setLoginError(true);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
         });
-        document.location.href = "/";
-      });
     });
   }
+
+  function showAlert(message, status) {}
 
   return (
     <section className="login">
@@ -55,8 +75,14 @@ export function LoginForm() {
               ИКИТ
             </span>
           </p>
+
           <form className="login__form" method="POST" onSubmit={handleSubmit}>
             <p className="login__text">Вход в личный кабинет:</p>
+            {loginError && (
+              <div class="alert alert-danger" role="alert">
+                { loginMessage }
+              </div>
+            )}
             <p className="login__field login__login">
               <input
                 className="login__input login__login-input"
