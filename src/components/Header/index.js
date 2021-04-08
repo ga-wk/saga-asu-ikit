@@ -64,6 +64,7 @@ function helpClick(e) {
 
 function logOut() {
   Cookie.deleteCookie("usertoken");
+  localStorage.clear();
   document.location.reload();
 }
 

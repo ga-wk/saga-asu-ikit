@@ -12,6 +12,8 @@ export function LoginForm() {
   let [loginMessage, setLoginMessage] = React.useState("");
   let [loginError, setLoginError] = React.useState(false);
 
+  if (Cookie.getCookie("usertoken")) return <Redirect to="/" />;
+
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -33,6 +35,7 @@ export function LoginForm() {
             Cookie.setCookie("usertoken", data.usertoken, {
               "max-age": `${new Date(Date.now() + 8 * 3600000)}`,
             });
+
             document.location.href = "/";
             return;
           }
@@ -48,8 +51,6 @@ export function LoginForm() {
     });
   }
 
-  if (Cookie.getCookie("usertoken")) return <Redirect to="/" /> ;
-  
   return (
     <section className="login">
       {/* <div className="login__background"></div> */}

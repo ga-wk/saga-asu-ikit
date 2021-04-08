@@ -3,7 +3,7 @@ import React from 'react';
 import './index.scss'
 import '../../styles/reprise.scss'
 
-import { Header } from '../Header';
+
 
 function itemClick(e) {
     e.preventDefault()
@@ -19,7 +19,6 @@ function itemClick(e) {
 export const Notifications = () => {
     return (
         <>
-            <Header />
             <h1 className="main-title">
                 <a className="main-title__link">Уведомления</a>
             </h1>
