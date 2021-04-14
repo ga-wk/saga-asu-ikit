@@ -3,6 +3,7 @@ import "./index.scss";
 import { sfuLoginImageTablet, sfuLoginImageMobile } from "../../assets/images";
 import { Cookie } from "../../libs/cookie.js";
 import { postData } from "../../libs/requests";
+import { Redirect } from "react-router";
 
 export function LoginForm() {
   let loginRef = useRef();
@@ -10,6 +11,8 @@ export function LoginForm() {
 
   let [loginMessage, setLoginMessage] = React.useState("");
   let [loginError, setLoginError] = React.useState(false);
+
+  if (Cookie.getCookie("usertoken")) return <Redirect to="/" />;
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -30,8 +33,9 @@ export function LoginForm() {
 
           if (data.usertoken) {
             Cookie.setCookie("usertoken", data.usertoken, {
-              "max-age": `${new Date(Date.now() + 8 * 3600000)}`,
+              "max-age=": `${900}`,
             });
+
             document.location.href = "/";
             return;
           }
@@ -46,8 +50,6 @@ export function LoginForm() {
         });
     });
   }
-
-  function showAlert(message, status) {}
 
   return (
     <section className="login">
@@ -80,7 +82,7 @@ export function LoginForm() {
             <p className="login__text">Вход в личный кабинет:</p>
             {loginError && (
               <div class="alert alert-danger" role="alert">
-                { loginMessage }
+                {loginMessage}
               </div>
             )}
             <p className="login__field login__login">

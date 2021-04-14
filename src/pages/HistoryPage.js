@@ -1,15 +1,15 @@
-import React, { Fragment, useEffect, useState } from "react";
-import { Redirect } from "react-router";
+import React, { Fragment } from "react";
+
+import History  from "../components/Ordering/History";
 import { Header } from "../components/Header";
-
-import Ordering from "../components/Ordering/index";
-import { Cookie } from "../libs/cookie";
+import { Cookie } from "../libs/cookie.js";
 import { postData } from "../libs/requests";
+import { Redirect } from "react-router";
 
-export const OrderingPage = () => {
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [user, setUser] = useState(null);
+export const HistoryPage = () => {
+  const [error, setError] = React.useState(null);
+  const [isLoaded, setIsLoaded] = React.useState(false);
+  const [user, setUser] = React.useState(null);
 
   const url = "http://193.218.136.174:8080/cabinet/rest/student/get";
 
@@ -18,7 +18,7 @@ export const OrderingPage = () => {
     userToken: Cookie.getCookie("usertoken"),
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     const promise = postData(url, data);
     if (promise !== undefined) {
       promise
@@ -46,14 +46,13 @@ export const OrderingPage = () => {
     return <div>Загрузка...</div>;
   } else {
 
-    console.log(user)
     return (
       <Fragment>
         <Header
           firstName={`${user.student.surname}`}
           fullName={`${user.student.surname} ${user.student.name[0]}. ${user.student.patronymic[0]}.`}
         />
-        <Ordering notification={user.student.notification} email={user.student.email}/>
+        <History  />
       </Fragment>
     );
   }

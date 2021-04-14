@@ -2,9 +2,6 @@ import React from "react";
 
 import "./index.scss";
 import "../../styles/reprise.scss";
-import { Cookie } from "../../libs/cookie.js";
-import { Header } from "../Header";
-import { postData } from "../../libs/requests";
 
 function clickProfileLabel(e) {
   const profileInfoItem = e.target.parentElement;
@@ -26,58 +23,15 @@ function clickProfileLabel(e) {
   }
 }
 
-export const Profile = () => {
-  if (!Cookie.getCookie("usertoken")) {
-    document.location.href = "/login";
-  }
-  const [error, setError] = React.useState(null);
-  const [isLoaded, setIsLoaded] = React.useState(false);
-  const [user, setUser] = React.useState(null);
-
-  const url = "http://193.218.136.174:8080/cabinet/rest/student/get";
-
-  const data = {
-    text: "",
-    userToken: Cookie.getCookie("usertoken"),
-  };
-
-  React.useEffect(() => {
-    const promise = postData(url, data);
-    if (promise !== undefined) {
-      promise
-        .then((res) => res.json())
-        .then(
-          (result) => {
-            setUser(result);
-            setIsLoaded(true);
-          },
-          (error) => {
-            setError(error);
-            setIsLoaded(true);
-          }
-        );
-    } else {
-      setIsLoaded(false);
-    }
-  }, [isLoaded]);
-
-  if (error) {
-    return <div>Ошибка: {error.message}</div>;
-  } else if (!isLoaded) {
-    return <div>Загрузка...</div>;
-  } else {
+export const  Profile = (props) => {
     return (
       <>
-        <Header
-          firstName={`${user.student.surname}`}
-          fullName={`${user.student.surname} ${user.student.name[0]}. ${user.student.patronymic[0]}.`}
-        />
         <h1 className="main-title">
           <a className="main-title__link">Профиль</a>
         </h1>
         <div className="profile">
           <div className="profile-info">
-            <span className="profile-info__name">{`${user.student.surname} ${user.student.name} ${user.student.patronymic}`}</span>
+            <span className="profile-info__name">{`${props.student.surname} ${props.student.name} ${props.student.patronymic}`}</span>
             <ul className="profile-info__list">
               <li className="profile-info__item">
                 <label
@@ -89,14 +43,14 @@ export const Profile = () => {
                 </label>
                 <div className="profile-info__inner-wrapper">
                   <span className="profile-info__desc profile-info__desc--show">
-                    {`${user.student.birthday}`}
+                    {`${props.student.birthday}`}
                   </span>
                   <input
                     className="profile-info__input profile-info__input--birthday profile-info__input--closed"
                     type="date"
                     id="birthday"
                     name="birthday"
-                    value={`${user.student.birthday}`}
+                    value={`${props.student.birthday}`}
                   />
                 </div>
               </li>
@@ -110,14 +64,14 @@ export const Profile = () => {
                 </label>
                 <div className="profile-info__inner-wrapper">
                   <span className="profile-info__desc profile-info__desc--show">
-                    {`${user.student.email}`}
+                    {`${props.student.email}`}
                   </span>
                   <input
                     className="profile-info__input profile-info__input--email profile-info__input--closed"
                     type="text"
                     id="email"
                     name="email"
-                    value={`${user.student.email}`}
+                    value={`${props.student.email}`}
                   />
                 </div>
               </li>
@@ -131,7 +85,7 @@ export const Profile = () => {
                 </label>
                 <div className="profile-info__inner-wrapper">
                   <span className="profile-info__desc profile-info__desc--show">
-                    {user.student.notification
+                    {props.student.notification
                       ? "Отправлять"
                       : "Не отправлять "}
                   </span>
@@ -140,7 +94,7 @@ export const Profile = () => {
                     id="mail-send"
                     name="mail-send"
                     defaultValue={
-                      user.student.notification
+                      props.student.notification
                         ? "Отправлять"
                         : "Не отправлять "
                     }
@@ -186,5 +140,5 @@ export const Profile = () => {
         </div>
       </>
     );
-  }
+  
 };
