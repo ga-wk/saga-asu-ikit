@@ -11,7 +11,7 @@ import { EventsCalendar } from './components/EventsCalendar'
 import { ListOfOrdersPage} from './pages/ListOfOrdersPage'
 import { OrderingPage } from './pages/OrderingPage'
 import { AcademicPlanPage } from './pages/AcademicPlanPage'
-import History from './components/Ordering/History'
+import {HistoryPage} from './pages/HistoryPage'
 import { StudentSchedulePage } from './pages/StudentSchedulePage'
 
 
@@ -20,9 +20,7 @@ export default function App() {
     <BrowserRouter>
       <div className="app">
         <Switch>
-          {/* <Route path="/" exact component={Home}/> */}
           <Route path="/login" exact component={Login}/>
-          {/* <Route path="/" exact component={HeaderPage}/> */}
           <Route path="/" exact component={ProfilePage}/>
           <Route path="/notifications" exact component={NotificationsPage}/>
           <Route path="/recordbook" exact component={RecordBookPage}/>
@@ -31,7 +29,7 @@ export default function App() {
           <Route path="/ordering" exact component={ OrderingPage }/>
           <Route path="/academicplan" exact component={ AcademicPlanPage }/>
           <Route path="/schedule" exact component={ StudentSchedulePage }/>
-          <Route path="/ordering/history" exact component={ History }/>
+          <Route path="/ordering/history" exact component={ HistoryPage }/>
         </Switch>
       </div>
     </BrowserRouter>

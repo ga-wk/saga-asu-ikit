@@ -1,13 +1,10 @@
 import React from 'react'
 
-import {Header} from '../../Header/index'
-
 import './index.scss'
 
 function History() {
   return (
     <>
-      <Header/>
       <div className="ordering-container">
         <h1 className="main-title">
           <a className="main-title__link">Студент/Заказ справок/История</a>
