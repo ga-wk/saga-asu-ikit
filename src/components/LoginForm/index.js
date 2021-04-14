@@ -33,7 +33,7 @@ export function LoginForm() {
 
           if (data.usertoken) {
             Cookie.setCookie("usertoken", data.usertoken, {
-              "max-age": `${new Date(Date.now() + 8 * 3600000)}`,
+              "max-age=": `${900}`,
             });
 
             document.location.href = "/";

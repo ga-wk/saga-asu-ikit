@@ -26,7 +26,6 @@ export const ProfilePage = () => {
         .then(
           (result) => {
             setUser(result);
-
             setIsLoaded(true);
           },
           (error) => {
@@ -46,18 +45,12 @@ export const ProfilePage = () => {
   } else if (!isLoaded) {
     return <div>Загрузка...</div>;
   } else {
-    
-    localStorage.setItem("firstName", `${user.student.surname}`);
-    localStorage.setItem(
-      "fullName",
-      `${user.student.surname} ${user.student.name[0]}. ${user.student.patronymic[0]}.`
-    );
 
     return (
       <Fragment>
         <Header
-          firstName={localStorage.getItem("firstName")}
-          fullName={localStorage.getItem("fullName")}
+          firstName={`${user.student.surname}`}
+          fullName={`${user.student.surname} ${user.student.name[0]}. ${user.student.patronymic[0]}.`}
         />
         <Profile student={user.student} />
       </Fragment>
