@@ -15,10 +15,6 @@ function itemClick(e) {
 }
 
 export const Notifications = (props) => {
-  console.log(props.notifications);
-  // props.notifications.map(el=>{
-  //   el
-  // })
   return (
     <>
       <h1 className="main-title">

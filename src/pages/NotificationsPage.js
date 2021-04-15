@@ -20,49 +20,34 @@ export const NotificationsPage = () => {
     userToken: Cookie.getCookie("usertoken"),
   };
 
+  let promiseUser = null;
+  let promiseNotifications = null;
+
   useEffect(() => {
-    const promiseUser = postData(urlUser, data);
-    if (promiseUser !== undefined) {
-      promiseUser
-        .then((res) => res.json())
-        .then(
-          (result) => {
-            setUser(result);
-          },
-          (error) => {
-            setError(error);
-          }
-        );
-    } else {
-      setIsLoaded(false);
-    }
-    
-    const promiseNotifications = postData(urlNotifications, data);
-    if (promiseNotifications !== undefined) {
-      promiseNotifications
-        .then((res) => res.json())
-        .then(
-          (result) => {
+    async function fetchAPI() {
+      promiseUser = postData(urlUser, data);
+      if (promiseUser !== undefined) {
+        await promiseUser
+          .then((res) => res.json())
+          .then((result) => setUser(result));
+      } else {
+        setIsLoaded(false);
+      }
+
+      promiseNotifications = postData(urlNotifications, data);
+      if (promiseNotifications !== undefined) {
+        await promiseNotifications
+          .then((res) => res.json())
+          .then((result) => {
             setNotifications(result);
             setIsLoaded(true);
-          },
-          (error) => {
-            setError(error);
-            setIsLoaded(false);
-          }
-        );
-    } else {
-      setIsLoaded(false);
+          });
+      } else {
+        setIsLoaded(false);
+      }
     }
-
-    // Promise.all([ promiseNotifications, promiseUser])
-    //   .then(() => {
-    //     setIsLoaded(true);
-    //   })
-    //   .catch(() => {
-    //     setIsLoaded(false);
-    //   });
-
+    
+    fetchAPI();
   }, [isLoaded]);
 
   if (!Cookie.getCookie("usertoken")) return <Redirect to="/login" />;
@@ -72,8 +57,8 @@ export const NotificationsPage = () => {
   } else if (!isLoaded) {
     return <div>Загрузка...</div>;
   } else {
-    console.log(user)
-console.log(notifications)
+    console.log(user);
+    console.log(notifications);
     return (
       <Fragment>
         <Header
