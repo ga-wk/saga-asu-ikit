@@ -386,7 +386,6 @@ function RecordBookFragments(props) {
 export const RecordBook = () => {
     return (
         <>
-            <Header />
             <h1 className="main-title">
                 <a className="main-title__link">Зачетная книжка</a>
             </h1>
