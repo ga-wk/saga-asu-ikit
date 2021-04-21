@@ -19,11 +19,34 @@ function itemClick(e) {
   }
 }
 
-function MobileFragment() {
+function MobileFragment({ currentSemester, currentRating }) {
+  console.log("cur", currentRating);
+
   return (
     <>
       <ul className="record-book__list " onClick={itemClick}>
-        <li className="record-book__item item_close ">
+        {currentRating.ratings.map((rating, index) => {
+          console.log(rating);
+          return (
+            <li className="record-book__item item_close " key={index}>
+              <h3 className="record-book__title exam">
+                {rating.subjectName}
+              </h3>
+              <div className="record-book__info">
+                <ul className="info__list">
+                  <li className="info__item">Кол-во часов: {rating.hoursCount}( з.е.)</li>
+                  <li className="info__item">Оценка: -</li>
+                  <li className="info__item">Дата: -</li>
+                  <li className="info__item">
+                    Преподователь: Погребников Алексанр Константинович
+                  </li>
+                  <li className="info__item">Доп. Информация: -</li>
+                </ul>
+              </div>
+            </li>
+          );
+        })}
+        {/* <li className="record-book__item item_close ">
           <h3 className="record-book__title exam">
             Программирование на COS в Intersystems Cache
           </h3>
@@ -38,8 +61,8 @@ function MobileFragment() {
               <li className="info__item">Доп. Информация: -</li>
             </ul>
           </div>
-        </li>
-        <li className="record-book__item item_close ">
+        </li> */}
+        {/* <li className="record-book__item item_close ">
           <h3 className="record-book__title exam">
             Проектирование и архитектура информационных систем
           </h3>
@@ -180,7 +203,7 @@ function MobileFragment() {
               <li className="info__item">Доп. Информация: -</li>
             </ul>
           </div>
-        </li>
+        </li> */}
       </ul>
     </>
   );
@@ -305,7 +328,7 @@ function RecordBookFragments(props) {
   const pageWidth = props.pageWidth;
   const desktopWidth = 1200;
   if (pageWidth <= desktopWidth) {
-    return MobileFragment();
+    return MobileFragment(props);
   } else {
     return DesktopFragment();
   }
@@ -317,11 +340,6 @@ function filterSemestersByUserId(semesters, user) {
   });
 }
 
-function onChangeSemesterHandler(e) {
-  e.preventDefault();
-  console.log(e.target.value);
-}
-
 // TODO
 // текущий семестр состояние
 // рендер текущего состояния с нужными данными
@@ -329,9 +347,44 @@ function onChangeSemesterHandler(e) {
 // доки
 
 export const RecordBook = ({ user }) => {
+  function onChangeSemesterHandler(e) {
+    e.preventDefault();
+    setCurrentSemester(semesters[Number(e.target.value)]);
+  }
+
+  function changeCurrentRating(currentSem) {
+    return new Promise((resolve) => {
+      let url = "http://193.218.136.174:8080/cabinet/rest/student/rating";
+      let body = {
+        semester: currentSem.idLGS,
+        userToken: Cookie.getCookie("usertoken"),
+      };
+
+      const ratingPromise = postData(url, body);
+
+      if (ratingPromise) {
+        ratingPromise
+          .then((res) => res.json())
+          .then((res) => {
+            return new Promise((resolve) => {
+              setCurrentRating(res);
+              setCurrentRatingLoading(true);
+              resolve(res);
+            });
+          });
+      }
+    });
+  }
+
   const [semesters, setSemesters] = useState(null);
   const [error, setError] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
+
+  const [currentSemester, setCurrentSemester] = useState(null);
+  const [isCurrentSemLoaded, setIsCurrentSemLoaded] = useState(false);
+
+  const [currentRating, setCurrentRating] = useState(null);
+  const [isCurrentRatingLoading, setCurrentRatingLoading] = useState(null);
 
   let url = "http://193.218.136.174:8080/cabinet/rest/student/semesters";
   let body = {
@@ -350,43 +403,60 @@ export const RecordBook = ({ user }) => {
         .then((res) => res.json())
         .then((result) => {
           return new Promise((resolve) => {
-            setSemesters(filterSemestersByUserId(result, user));
+            const filteredSems = filterSemestersByUserId(result, user);
+            setSemesters(filteredSems);
             setIsLoaded(true);
-            resolve(semesters);
+            resolve(filteredSems);
           });
         })
-        // .then(() => {
-        //   let urlRating = "http://193.218.136.174:8080/cabinet/rest/student/rating";
-        //   let bodyRating = {
-        //     semester: 88916,
-        //     userToken: Cookie.getCookie("usertoken"),
-        //   }
-        //   const ratingPromise = postData(urlRating, bodyRating)
-        //   if (ratingPromise) {
-        //     ratingPromise
-        //       .then(res => res.json())
-        //       .then(res => console.log('rat', res))
-        //   }
-        // })
+        .then((result) => {
+          return new Promise((resolve) => {
+            setCurrentSemester(result[0]);
+            setIsCurrentSemLoaded(true);
+            resolve(result);
+          });
+        })
+        .then((result) => {
+          return new Promise((resolve) => {
+            let url = "http://193.218.136.174:8080/cabinet/rest/student/rating";
+            let body = {
+              semester: result[0].idLGS,
+              userToken: Cookie.getCookie("usertoken"),
+            };
 
-        // DELETE
-        .then((result) => console.log(semesters));
+            const ratingPromise = postData(url, body);
+
+            if (ratingPromise) {
+              ratingPromise
+                .then((res) => res.json())
+                .then((res) => {
+                  return new Promise((resolve) => {
+                    setCurrentRating(res);
+                    setCurrentRatingLoading(true);
+                    resolve(res);
+                  });
+                });
+            }
+          });
+        });
     }
-  }, [isLoaded]);
+  }, [isLoaded, isCurrentSemLoaded, isCurrentRatingLoading]);
 
   if (error) {
     return <div>Ошибка: {error.message}</div>;
-  } else if (!isLoaded) {
+  } else if (!isLoaded || !isCurrentSemLoaded || !isCurrentRatingLoading) {
     return <div>Загрузка...</div>;
   } else {
     return (
-      <SemesterContext.Provider value={{onChangeSemesterHandler}}>
+      <SemesterContext.Provider value={{ onChangeSemesterHandler }}>
         <h1 className="main-title">
           <a className="main-title__link">Зачетная книжка</a>
         </h1>
         <Semester semesters={semesters} />
         <section className="record-book container">
           <RecordBookFragments
+            currentSemester={currentSemester}
+            currentRating={currentRating}
             pageWidth={document.documentElement.scrollWidth}
           />
         </section>

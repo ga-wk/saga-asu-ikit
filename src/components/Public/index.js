@@ -19,7 +19,7 @@ export const Semester = ({ semesters }) => {
   return (
     <div className="semester__header">
       <div className="semester">
-        <select className="semester__list" onChange={onChangeSemesterHandler}>
+        <select className="semester__list" onChange={onChangeSemesterHandler} defaultValue={sortSems[0].semesterNumber}>
           {sortSems.map((semester) => {
             return (
               <option className="semester__item"
