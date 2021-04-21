@@ -45,7 +45,7 @@ export const RecordBookPage = () => {
           firstName={`${user.student.surname}`}
           fullName={`${user.student.surname} ${user.student.name[0]}. ${user.student.patronymic[0]}.`}
         />
-        <RecordBook />
+        <RecordBook user={user}/>
       </Fragment>
     );
   }
