@@ -19,197 +19,74 @@ function itemClick(e) {
   }
 }
 
-function MobileFragment({ currentSemester, currentRating }) {
-  console.log("cur", currentRating);
-
+function MobileFragment({ currentRating }) {
   return (
     <>
       <ul className="record-book__list " onClick={itemClick}>
         {currentRating.ratings.map((rating, index) => {
-          console.log(rating);
+          let classes = ["record-book__title"];
+
+          if (rating.isExam) {
+            classes.push("exam");
+          } else if (rating.isPractice) {
+            classes.push("practice");
+          } else if (rating.isCP) {
+            classes.push("course-project");
+          } else if (rating.isCW) {
+            classes.push("course-work");
+          } else {
+            classes.push("offset");
+          }
+
           return (
             <li className="record-book__item item_close " key={index}>
-              <h3 className="record-book__title exam">
-                {rating.subjectName}
-              </h3>
+              <h3 className={classes.join(" ")}>{rating.subjectName}</h3>
               <div className="record-book__info">
                 <ul className="info__list">
-                  <li className="info__item">Кол-во часов: {rating.hoursCount}( з.е.)</li>
-                  <li className="info__item">Оценка: -</li>
+                  <li className="info__item">
+                    Кол-во часов: {rating.hoursCount}
+                  </li>
+                  <li className="info__item">
+                    Оценка:{" "}
+                    {rating.isExam
+                      ? rating.examrating !== 0
+                        ? rating.examrating
+                        : "-"
+                      : rating.passrating
+                      ? rating.passrating > 1
+                        ? rating.passrating
+                        : "Зачет"
+                      : "-"}
+                  </li>
                   <li className="info__item">Дата: -</li>
                   <li className="info__item">
-                    Преподователь: Погребников Алексанр Константинович
+                    Преподователь:{" "}
+                    {rating.isExam
+                      ? rating.examTutor
+                        ? rating.examTutor
+                        : "-"
+                      : rating.passTutor
+                      ? rating.passTutor
+                      : "-"}
                   </li>
-                  <li className="info__item">Доп. Информация: -</li>
+                  <li className="info__item">
+                    Доп. Информация:
+                    <br />
+                    {rating.dateOfPass ? `Консультация: ` : ""}
+                    <br />
+                    {rating.dateOfPass ? `Зачет: ${rating.dateOfPass}` : ""}
+                  </li>
                 </ul>
               </div>
             </li>
           );
         })}
-        {/* <li className="record-book__item item_close ">
-          <h3 className="record-book__title exam">
-            Программирование на COS в Intersystems Cache
-          </h3>
-          <div className="record-book__info">
-            <ul className="info__list">
-              <li className="info__item">Кол-во часов: 144( з.е.)</li>
-              <li className="info__item">Оценка: -</li>
-              <li className="info__item">Дата: -</li>
-              <li className="info__item">
-                Преподователь: Погребников Алексанр Константинович
-              </li>
-              <li className="info__item">Доп. Информация: -</li>
-            </ul>
-          </div>
-        </li> */}
-        {/* <li className="record-book__item item_close ">
-          <h3 className="record-book__title exam">
-            Проектирование и архитектура информационных систем
-          </h3>
-          <div className="record-book__info">
-            <ul className="info__list">
-              <li className="info__item">Кол-во часов: 144( з.е.)</li>
-              <li className="info__item">Оценка: -</li>
-              <li className="info__item">Дата: -</li>
-              <li className="info__item">
-                Преподователь: Погребников Алексанр Константинович
-              </li>
-              <li className="info__item">Доп. Информация: -</li>
-            </ul>
-          </div>
-        </li>
-        <li className="record-book__item item_close ">
-          <h3 className="record-book__title exam">Язык программирования C#</h3>
-          <div className="record-book__info">
-            <ul className="info__list">
-              <li className="info__item">Кол-во часов: 144( з.е.)</li>
-              <li className="info__item">Оценка: -</li>
-              <li className="info__item">Дата: -</li>
-              <li className="info__item">
-                Преподователь: Погребников Алексанр Константинович
-              </li>
-              <li className="info__item">Доп. Информация: -</li>
-            </ul>
-          </div>
-        </li>
-        <li className="record-book__item item_close ">
-          <h3 className="record-book__title offset">
-            Командный курсовой проект “Корпоративные приложения”
-          </h3>
-          <div className="record-book__info">
-            <ul className="info__list">
-              <li className="info__item">Кол-во часов: 144( з.е.)</li>
-              <li className="info__item">Оценка: -</li>
-              <li className="info__item">Дата: -</li>
-              <li className="info__item">
-                Преподователь: Погребников Алексанр Константинович
-              </li>
-              <li className="info__item">Доп. Информация: -</li>
-            </ul>
-          </div>
-        </li>
-        <li className="record-book__item item_close ">
-          <h3 className="record-book__title offset">
-            Модели стохастических объектов
-          </h3>
-          <div className="record-book__info">
-            <ul className="info__list">
-              <li className="info__item">Кол-во часов: 144( з.е.)</li>
-              <li className="info__item">Оценка: -</li>
-              <li className="info__item">Дата: -</li>
-              <li className="info__item">
-                Преподователь: Погребников Алексанр Константинович
-              </li>
-              <li className="info__item">Доп. Информация: -</li>
-            </ul>
-          </div>
-        </li>
-        <li className="record-book__item item_close ">
-          <h3 className="record-book__title course-work">
-            Прикладная физическая культуры и спорта
-          </h3>
-          <div className="record-book__info">
-            <ul className="info__list">
-              <li className="info__item">Кол-во часов: 144( з.е.)</li>
-              <li className="info__item">Оценка: -</li>
-              <li className="info__item">Дата: -</li>
-              <li className="info__item">
-                Преподователь: Погребников Алексанр Константинович
-              </li>
-              <li className="info__item">Доп. Информация: -</li>
-            </ul>
-          </div>
-        </li>
-        <li className="record-book__item item_close ">
-          <h3 className="record-book__title course-work">
-            Программирование на языке Java
-          </h3>
-          <div className="record-book__info">
-            <ul className="info__list">
-              <li className="info__item">Кол-во часов: 144( з.е.)</li>
-              <li className="info__item">Оценка: -</li>
-              <li className="info__item">Дата: -</li>
-              <li className="info__item">
-                Преподователь: Погребников Алексанр Константинович
-              </li>
-              <li className="info__item">Доп. Информация: -</li>
-            </ul>
-          </div>
-        </li>
-        <li className="record-book__item item_close ">
-          <h3 className="record-book__title course-project">
-            Профессионально-орентированный иностранный язык
-          </h3>
-          <div className="record-book__info">
-            <ul className="info__list">
-              <li className="info__item">Кол-во часов: 144( з.е.)</li>
-              <li className="info__item">Оценка: -</li>
-              <li className="info__item">Дата: -</li>
-              <li className="info__item">
-                Преподователь: Погребников Алексанр Константинович
-              </li>
-              <li className="info__item">Доп. Информация: -</li>
-            </ul>
-          </div>
-        </li>
-        <li className="record-book__item item_close ">
-          <h3 className="record-book__title course-project">
-            Программирование на COS в Intersystems Cache
-          </h3>
-          <div className="record-book__info">
-            <ul className="info__list">
-              <li className="info__item">Кол-во часов: 144( з.е.)</li>
-              <li className="info__item">Оценка: -</li>
-              <li className="info__item">Дата: -</li>
-              <li className="info__item">
-                Преподователь: Погребников Алексанр Константинович
-              </li>
-              <li className="info__item">Доп. Информация: -</li>
-            </ul>
-          </div>
-        </li>
-        <li className="record-book__item item_close ">
-          <h3 className="record-book__title practice">
-            Физическая культура и спорт
-          </h3>
-          <div className="record-book__info">
-            <ul className="info__list">
-              <li className="info__item">Кол-во часов: 144( з.е.)</li>
-              <li className="info__item">Оценка: -</li>
-              <li className="info__item">Дата: -</li>
-              <li className="info__item">
-                Преподователь: Погребников Алексанр Константинович
-              </li>
-              <li className="info__item">Доп. Информация: -</li>
-            </ul>
-          </div>
-        </li> */}
       </ul>
     </>
   );
 }
 
-function DesktopFragment() {
+function DesktopFragment({ currentRating }) {
   return (
     <>
       <table className="table">
@@ -221,96 +98,56 @@ function DesktopFragment() {
           <th className="table__header-item">Преподаватель</th>
           <th className="table__header-item">Доп. Информация</th>
         </tr>
-        <tr className="table__body">
-          <td className="table__body-item exam">
-            Программирование на COS в Intersystems Cache
-          </td>
-          <td className="table__body-item">144 (4 з.е.)</td>
-          <td className="table__body-item">-</td>
-          <td className="table__body-item">-</td>
-          <td className="table__body-item">
-            Погребников Александр Константинович
-          </td>
-          <td className="table__body-item">-</td>
-        </tr>
-        <tr className="table__body">
-          <td className="table__body-item exam">
-            Проектирование и архитектура информационных систем
-          </td>
-          <td className="table__body-item">144 (4 з.е.)</td>
-          <td className="table__body-item">-</td>
-          <td className="table__body-item">-</td>
-          <td className="table__body-item">Кукарцев Владислав Викторович</td>
-          <td className="table__body-item">-</td>
-        </tr>
-        <tr className="table__body">
-          <td className="table__body-item offset">Язык программирования C#</td>
-          <td className="table__body-item">180 (5 з.е.)</td>
-          <td className="table__body-item">-</td>
-          <td className="table__body-item">-</td>
-          <td className="table__body-item">Чикизов Алексей Александрович</td>
-          <td className="table__body-item">-</td>
-        </tr>
-        <tr className="table__body">
-          <td className="table__body-item offset">
-            Командный курсовой проект “Корпоративные приложения”
-          </td>
-          <td className="table__body-item">144 (4 з.е.)</td>
-          <td className="table__body-item">-</td>
-          <td className="table__body-item">-</td>
-          <td className="table__body-item">Хныкин Антон Владимирович</td>
-          <td className="table__body-item">-</td>
-        </tr>
-        <tr className="table__body">
-          <td className="table__body-item course-work">
-            Модели стохастических объектов
-          </td>
-          <td className="table__body-item">144 (4 з.е.)</td>
-          <td className="table__body-item">-</td>
-          <td className="table__body-item">-</td>
-          <td className="table__body-item">Михалев Антон Сергеевич</td>
-          <td className="table__body-item">-</td>
-        </tr>
-        <tr className="table__body">
-          <td className="table__body-item course-work">
-            Прикладная физическая культуры и спорта
-          </td>
-          <td className="table__body-item">46 (4 з.е.)</td>
-          <td className="table__body-item">-</td>
-          <td className="table__body-item">-</td>
-          <td className="table__body-item">Сбродов Иван Геннадьевич</td>
-          <td className="table__body-item">-</td>
-        </tr>
-        <tr className="table__body">
-          <td className="table__body-item course-project">
-            Программирование на языке Java
-          </td>
-          <td className="table__body-item">108 (4 з.е.)</td>
-          <td className="table__body-item">-</td>
-          <td className="table__body-item">-</td>
-          <td className="table__body-item">Черниговский Алексей Сергеевич</td>
-          <td className="table__body-item">-</td>
-        </tr>
-        <tr className="table__body">
-          <td className="table__body-item course-project">
-            Профессионально-орентированный иностранный язык
-          </td>
-          <td className="table__body-item">72 (4 з.е.)</td>
-          <td className="table__body-item">-</td>
-          <td className="table__body-item">-</td>
-          <td className="table__body-item">Романовская Анна Александрова</td>
-          <td className="table__body-item">-</td>
-        </tr>
-        <tr className="table__body">
-          <td className="table__body-item practice">
-            Физическая культура и спорт
-          </td>
-          <td className="table__body-item">18 (4 з.е.)</td>
-          <td className="table__body-item">-</td>
-          <td className="table__body-item">-</td>
-          <td className="table__body-item">Сбродов Иван Геннадьевич</td>
-          <td className="table__body-item">-</td>
-        </tr>
+
+        {currentRating.ratings.map((rating, index) => {
+          let classes = ["table__body-item"];
+
+          if (rating.isExam) {
+            classes.push("exam");
+          } else if (rating.isPractice) {
+            classes.push("practice");
+          } else if (rating.isCP) {
+            classes.push("course-project");
+          } else if (rating.isCW) {
+            classes.push("course-work");
+          } else {
+            classes.push("offset");
+          }
+
+          return (
+            <tr className="table__body" key={index}>
+              <td className={classes.join(" ")}>{rating.subjectName}</td>
+              <td className="table__body-item">{rating.hoursCount}</td>
+              <td className="table__body-item">
+                {" "}
+                {rating.isExam
+                  ? rating.examrating !== 0
+                    ? rating.examrating
+                    : "-"
+                  : rating.passrating
+                  ? rating.passrating > 1
+                    ? rating.passrating
+                    : "Зачет"
+                  : "-"}
+              </td>
+              <td className="table__body-item">-</td>
+              <td className="table__body-item">
+                {rating.isExam
+                  ? rating.examTutor
+                    ? rating.examTutor
+                    : "-"
+                  : rating.passTutor
+                  ? rating.passTutor
+                  : "-"}
+              </td>
+              <td className="table__body-item table__body-item-add_info">
+                <p>Доп. Информация:</p>
+                <p>{rating.dateOfPass ? `Консультация: ` : ""}</p>
+                <p>{rating.dateOfPass ? `Зачет: ${rating.dateOfPass}` : ""}</p>
+              </td>
+            </tr>
+          );
+        })}
       </table>
 
       <ul className="helper__list ">
@@ -330,7 +167,7 @@ function RecordBookFragments(props) {
   if (pageWidth <= desktopWidth) {
     return MobileFragment(props);
   } else {
-    return DesktopFragment();
+    return DesktopFragment(props);
   }
 }
 
@@ -341,15 +178,23 @@ function filterSemestersByUserId(semesters, user) {
 }
 
 // TODO
-// текущий семестр состояние
-// рендер текущего состояния с нужными данными
 // модалка
+// для десктопа
 // доки
 
 export const RecordBook = ({ user }) => {
   function onChangeSemesterHandler(e) {
     e.preventDefault();
-    setCurrentSemester(semesters[Number(e.target.value)]);
+
+    const promise = new Promise((resolve) => {
+      const curSem = semesters.filter((sem) => {
+        return sem.semesterNumber === Number(e.target.value);
+      });
+      setCurrentSemester(curSem[0]);
+      resolve(curSem[0]);
+    }).then((curSem) => {
+      changeCurrentRating(curSem);
+    });
   }
 
   function changeCurrentRating(currentSem) {
@@ -368,7 +213,6 @@ export const RecordBook = ({ user }) => {
           .then((res) => {
             return new Promise((resolve) => {
               setCurrentRating(res);
-              setCurrentRatingLoading(true);
               resolve(res);
             });
           });
@@ -391,9 +235,6 @@ export const RecordBook = ({ user }) => {
     text: "",
     userToken: Cookie.getCookie("usertoken"),
   };
-
-  // DELETE
-  console.log(user);
 
   // REQUEST FOR SEMESTERS
   useEffect(() => {
@@ -455,7 +296,6 @@ export const RecordBook = ({ user }) => {
         <Semester semesters={semesters} />
         <section className="record-book container">
           <RecordBookFragments
-            currentSemester={currentSemester}
             currentRating={currentRating}
             pageWidth={document.documentElement.scrollWidth}
           />
