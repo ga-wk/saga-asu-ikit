@@ -491,9 +491,10 @@ function DesktopFragment(
   updateCurYear,
   updateCurMonth
 ) {
+const [shedule, setShedule] = useState(null);
   const dateofbegin = currentSemester.dateofbegin.split("-");
   const dateofend = currentSemester.dateofend.split("-");
-
+  const updateShedule = (value) => setShedule(value);
   //   const [curMonth, setCurMonth] = useState(Number(dateofbegin[1]));
   //   const [curYear, setCurYear] = useState(Number(dateofbegin[0]));
 
@@ -534,8 +535,6 @@ function DesktopFragment(
     setMonthName(monthNames[month]);
   }
 
-  console.log(month);
-  console.log(year);
   return (
     <>
       <section className="events-calendar">
@@ -569,7 +568,7 @@ function DesktopFragment(
 
         <div className="events-calendar__wrapper">
           <div className="events-calendar__days">
-            <Calendar month={month} year={year} />
+            <Calendar month={month} year={year} updateShedule={updateShedule}/>
           </div>
           <div className="events-calendar__dict">
             <ul className="dict-list">
@@ -594,11 +593,13 @@ function DesktopFragment(
           </div>
         </div>
         <div className="events-calendar__info">
-          <p className="events-calendar__info-title">
+            
+          {/* <p className="events-calendar__info-title">
             Расписание на 05.12.2020
-          </p>
+          </p> */}
           <ul className="events-calendar__info-lessons lessons__list">
-            <li className="lessons__item">
+              {shedule?<div>{shedule}</div>:'Загрузка'}
+            {/* <li className="lessons__item">
               <p>
                 Профессионально-ориентированный иностраный язык - Сплепченко
                 НН.,Шарова А.В.(Эиос)
@@ -609,7 +610,7 @@ function DesktopFragment(
             </li>
             <li className="lessons__item">
               <p>Программирование на языке Java - Черниговский А.С.(Эиос)</p>
-            </li>
+            </li> */}
           </ul>
         </div>
       </section>

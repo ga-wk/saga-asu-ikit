@@ -1,17 +1,53 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Cookie } from "../../libs/cookie";
+import { postData } from "../../libs/requests";
 
 import "./index.scss";
 
-export default function Calendar({ month, year }) {
+export default function Calendar({ month, year, updateShedule }) {
+  const urlShedule = "http://193.218.136.174:8080/cabinet/rest/student/shedule";
+
   function showInfo(event) {
+    const data = {
+      week: 2,
+      date: "2020-06-12",
+      userToken: Cookie.getCookie("usertoken"),
+    };
+
+    const promiseShedule = postData(urlShedule, data);
+    if (promiseShedule !== undefined) {
+      promiseShedule
+        .then((res) => res.json())
+        .then((result) => {
+            console.log(result)
+          const block = [];
+          block.push(
+            <p className="events-calendar__info-title">
+              Расписание на 2020-06-12
+            </p>
+          );
+
+          
+            result.subjects.map((el) => {
+              block.push(
+                <li className="lessons__item">
+                  <p>{el.subjectName}</p>
+                </li>
+              );
+            }
+          );
+          updateShedule(block);
+        });
+    }
+
     const list = document.querySelector(".events-calendar__info");
     list.classList.toggle("show");
   }
 
-  //проверка на весокосность 
+  //проверка на весокосность
   const isLeap = new Date(year, 1, 29).getMonth() == 1;
-  // генерация календаря, 6 недель
 
+  // генерация календаря, 6 недель
   let curDay = 0 - new Date(year - 1, month, 1).getDay();
 
   if (!isLeap) curDay++;
