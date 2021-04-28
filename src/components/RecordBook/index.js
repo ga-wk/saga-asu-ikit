@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import "./index.scss";
 import "../../styles/reprise.scss";
 
-import { Semester } from "../Public";
+import { filterSemestersByUserId, Semester } from "../Public";
 import { postData } from "../../libs/requests";
 import { Cookie } from "../../libs/cookie";
 import SemesterContext from "../../context/SemesterContext";
@@ -171,11 +171,7 @@ function RecordBookFragments(props) {
   }
 }
 
-function filterSemestersByUserId(semesters, user) {
-  return semesters.studentSemesters.filter((semester) => {
-    return semester.idGroup === user.student.idGroup;
-  });
-}
+
 
 // TODO
 // модалка

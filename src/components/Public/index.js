@@ -30,7 +30,11 @@ export const Semester = ({ semesters }) => {
   function ModalFunc() {
     return (
       <>
-        <Button variant="primary" className="semester__helper" onClick={handleShow}>
+        <Button
+          variant="primary"
+          className="semester__helper"
+          onClick={handleShow}
+        >
           <svg
             width="19"
             height="25"
@@ -73,7 +77,7 @@ export const Semester = ({ semesters }) => {
   }
 
   return (
-    <div className="semester__header">
+    <div className="semester__header container">
       <div className="semester">
         <select
           className="semester__list"
@@ -93,7 +97,7 @@ export const Semester = ({ semesters }) => {
           })}
         </select>
       </div>
-      <ModalFunc/>
+      <ModalFunc />
       {/* <button className="semester__helper" onClick={Example}>
         <svg
           width="19"
@@ -144,6 +148,7 @@ export const Searcher = () => (
     </div>
   </div>
 );
+
 export const Pagination = () => (
   <div className="center">
     <div className="pagination">
@@ -159,3 +164,10 @@ export const Pagination = () => (
     </div>
   </div>
 );
+
+export const filterSemestersByUserId = (semesters, user) => {
+  return semesters.studentSemesters.filter((semester) => {
+    return semester.idGroup === user.student.idGroup;
+  });
+};
+
