@@ -8,8 +8,14 @@ export default function Calendar({ month, year }) {
     list.classList.toggle("show");
   }
 
+  //проверка на весокосность 
+  const isLeap = new Date(year, 1, 29).getMonth() == 1;
   // генерация календаря, 6 недель
-  let curDay = 0 - new Date(year - 1, month, 1).getDay() + 1;
+
+  let curDay = 0 - new Date(year - 1, month, 1).getDay();
+
+  if (!isLeap) curDay++;
+
   const calendar = [];
   while (calendar.length < 42) {
     calendar.push(

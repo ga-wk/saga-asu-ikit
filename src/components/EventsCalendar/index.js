@@ -691,30 +691,8 @@ export const EventsCalendar = ({ user }) => {
             setCurMonth(Number(result[0].dateofbegin.split("-")[1]));
             setCurYear(Number(result[0].dateofbegin.split("-")[0]));
             setIsCurrentSemLoaded(true);
-            resolve(result);
           });
         })
-        .then((result) => {
-          //   return new Promise((resolve) => {
-          //     let url = "http://193.218.136.174:8080/cabinet/rest/student/rating";
-          //     let body = {
-          //       semester: result[0].idLGS,
-          //       userToken: Cookie.getCookie("usertoken"),
-          //     };
-          //     const ratingPromise = postData(url, body);
-          //     if (ratingPromise) {
-          //       ratingPromise
-          //         .then((res) => res.json())
-          //         .then((res) => {
-          //           return new Promise((resolve) => {
-          //             setCurrentRating(res);
-          //             setCurrentRatingLoading(true);
-          //             resolve(res);
-          //           });
-          //         });
-          //     }
-          //   });
-        });
     }
   }, [isLoaded, isCurrentSemLoaded]);
 
@@ -723,7 +701,6 @@ export const EventsCalendar = ({ user }) => {
   } else if (!isLoaded || !isCurrentSemLoaded) {
     return <div>Загрузка...</div>;
   } else {
-      console.log(currentSemester)
     return (
       <SemesterContext.Provider value={{ onChangeSemesterHandler }}>
         <h1 className="main-title">
