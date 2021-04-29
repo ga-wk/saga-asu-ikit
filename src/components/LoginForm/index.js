@@ -4,7 +4,9 @@ import { sfuLoginImageTablet, sfuLoginImageMobile } from "../../assets/images";
 import { Cookie } from "../../libs/cookie.js";
 import { postData } from "../../libs/requests";
 import { Redirect } from "react-router";
-
+import { authLogin } from "../../strings/urls";
+import { profile } from "../../strings/links";
+import { token, appToken } from "../../strings/public";
 export function LoginForm() {
   let loginRef = useRef();
   let passwordRef = useRef();
@@ -12,31 +14,27 @@ export function LoginForm() {
   let [loginMessage, setLoginMessage] = React.useState("");
   let [loginError, setLoginError] = React.useState(false);
 
-  if (Cookie.getCookie("usertoken")) return <Redirect to="/" />;
+  if (Cookie.getCookie(token)) return <Redirect to={profile} />;
 
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const url = "http://193.218.136.174:8080/cabinet/rest/auth/login";
-
     let bodyPost = {
       username: loginRef.current.value,
       password: passwordRef.current.value,
-      appToken: "4xNEa3sFzQ",
+      appToken: appToken,
     };
 
-    postData(url, bodyPost).then((res) => {
+    postData(authLogin, bodyPost).then((res) => {
       res
         .json()
         .then((data) => {
-          console.log(data);
-
           if (data.usertoken) {
-            Cookie.setCookie("usertoken", data.usertoken, {
+            Cookie.setCookie(token, data.usertoken, {
               "max-age=": `${900}`,
             });
 
-            document.location.href = "/";
+            document.location.href = profile;
             return;
           }
 
@@ -53,7 +51,6 @@ export function LoginForm() {
 
   return (
     <section className="login">
-      {/* <div className="login__background"></div> */}
       <div className="login__wrapper">
         <div className="login__wrapper-fixed">
           <p className="login__logo">

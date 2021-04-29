@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Cookie } from "../../libs/cookie";
 import { postData } from "../../libs/requests";
+import { studentSchedule } from "../../strings/links";
+import { token } from "../../strings/public";
 
 import "./index.scss";
 
 export default function Calendar({ month, year, updateShedule }) {
-  const urlShedule = "http://193.218.136.174:8080/cabinet/rest/student/shedule";
-
   function showInfo(event) {
     const data = {
       week: 2,
       date: "2020-06-12",
-      userToken: Cookie.getCookie("usertoken"),
+      userToken: Cookie.getCookie(token),
     };
 
-    const promiseShedule = postData(urlShedule, data);
+    const promiseShedule = postData(studentSchedule, data);
     if (promiseShedule !== undefined) {
       promiseShedule
         .then((res) => res.json())

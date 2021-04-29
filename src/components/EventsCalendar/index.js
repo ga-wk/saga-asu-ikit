@@ -8,7 +8,8 @@ import Calendar from "../Calendar";
 import "./index.scss";
 import { postData } from "../../libs/requests";
 import { Cookie } from "../../libs/cookie";
-
+import { monthNames, token } from "../../strings/public";
+import { studentSemesters } from "../../strings/urls";
 function showHideDate(event) {
   const li = event.target.parentElement;
   const date = li.querySelector(".week__day-list");
@@ -495,23 +496,6 @@ const [shedule, setShedule] = useState(null);
   const dateofbegin = currentSemester.dateofbegin.split("-");
   const dateofend = currentSemester.dateofend.split("-");
   const updateShedule = (value) => setShedule(value);
-  //   const [curMonth, setCurMonth] = useState(Number(dateofbegin[1]));
-  //   const [curYear, setCurYear] = useState(Number(dateofbegin[0]));
-
-  const monthNames = [
-    "Январь",
-    "Февраль",
-    "Март",
-    "Апрель",
-    "Май",
-    "Июнь",
-    "Июль",
-    "Август",
-    "Сентябрь",
-    "Октябрь",
-    "Ноябрь",
-    "Декабрь",
-  ];
 
   const [monthName, setMonthName] = useState(monthNames[month]);
 
@@ -593,24 +577,8 @@ const [shedule, setShedule] = useState(null);
           </div>
         </div>
         <div className="events-calendar__info">
-            
-          {/* <p className="events-calendar__info-title">
-            Расписание на 05.12.2020
-          </p> */}
           <ul className="events-calendar__info-lessons lessons__list">
               {shedule?<div>{shedule}</div>:'Загрузка'}
-            {/* <li className="lessons__item">
-              <p>
-                Профессионально-ориентированный иностраный язык - Сплепченко
-                НН.,Шарова А.В.(Эиос)
-              </p>
-            </li>
-            <li className="lessons__item">
-              <p>Модели стохастических объектов - Михалев А.С.(Эиос)</p>
-            </li>
-            <li className="lessons__item">
-              <p>Программирование на языке Java - Черниговский А.С.(Эиос)</p>
-            </li> */}
           </ul>
         </div>
       </section>
@@ -658,23 +626,20 @@ export const EventsCalendar = ({ user }) => {
   const [currentSemester, setCurrentSemester] = useState(null);
   const [isCurrentSemLoaded, setIsCurrentSemLoaded] = useState(false);
 
-  const [currentRating, setCurrentRating] = useState(null);
-  const [isCurrentRatingLoading, setCurrentRatingLoading] = useState(null);
-
   const [curMonth, setCurMonth] = useState(null);
   const [curYear, setCurYear] = useState(null);
   const updateCurYear = (value) => setCurYear(value);
   const updateCurMonth = (value) => setCurMonth(value);
 
-  let url = "http://193.218.136.174:8080/cabinet/rest/student/semesters";
+
   let body = {
     text: "",
-    userToken: Cookie.getCookie("usertoken"),
+    userToken: Cookie.getCookie(token),
   };
-  let dateofbegin = null;
+
   // REQUEST FOR SEMESTERS
   useEffect(() => {
-    const promise = postData(url, body);
+    const promise = postData(studentSemesters, body);
     if (promise) {
       promise
         .then((res) => res.json())

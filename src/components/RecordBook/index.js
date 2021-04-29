@@ -7,6 +7,8 @@ import { filterSemestersByUserId, Semester } from "../Public";
 import { postData } from "../../libs/requests";
 import { Cookie } from "../../libs/cookie";
 import SemesterContext from "../../context/SemesterContext";
+import { token } from "../../strings/public";
+import { studentRating, studentSemesters } from "../../strings/urls";
 
 function itemClick(e) {
   e.preventDefault();
@@ -226,15 +228,14 @@ export const RecordBook = ({ user }) => {
   const [currentRating, setCurrentRating] = useState(null);
   const [isCurrentRatingLoading, setCurrentRatingLoading] = useState(null);
 
-  let url = "http://193.218.136.174:8080/cabinet/rest/student/semesters";
-  let body = {
+  const body = {
     text: "",
-    userToken: Cookie.getCookie("usertoken"),
+    userToken: Cookie.getCookie(token),
   };
 
   // REQUEST FOR SEMESTERS
   useEffect(() => {
-    const promise = postData(url, body);
+    const promise = postData(studentSemesters, body);
     if (promise) {
       promise
         .then((res) => res.json())
@@ -255,13 +256,13 @@ export const RecordBook = ({ user }) => {
         })
         .then((result) => {
           return new Promise((resolve) => {
-            let url = "http://193.218.136.174:8080/cabinet/rest/student/rating";
+
             let body = {
               semester: result[0].idLGS,
-              userToken: Cookie.getCookie("usertoken"),
+              userToken: Cookie.getCookie(token),
             };
 
-            const ratingPromise = postData(url, body);
+            const ratingPromise = postData(studentRating, body);
 
             if (ratingPromise) {
               ratingPromise

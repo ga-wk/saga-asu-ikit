@@ -5,20 +5,22 @@ import { Header } from "../components/Header";
 import { Cookie } from "../libs/cookie";
 import { postData } from "../libs//requests";
 import { Redirect } from "react-router";
+import { token } from "../strings/public";
+import { login } from "../strings/links";
+import { studentGet } from "../strings/urls";
 
 export const RecordBookPage = () => {
   const [user, setUser] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState("");
 
-  const url = "http://193.218.136.174:8080/cabinet/rest/student/get";
   const body = {
     text: "",
-    userToken: Cookie.getCookie("usertoken"),
+    userToken: Cookie.getCookie(token),
   };
 
   useEffect(() => {
-    const p = postData(url, body);
+    const p = postData(studentGet, body);
     if (p) {
       p.then((res) => res.json())
         .then((res) => {
@@ -32,7 +34,7 @@ export const RecordBookPage = () => {
     }
   }, [isLoaded]);
 
-  if (!Cookie.getCookie("usertoken")) return <Redirect to="/login" />;
+  if (!Cookie.getCookie(token)) return <Redirect to={login} />;
 
   if (error) {
     return <div>Ошибка: {error.message}</div>;

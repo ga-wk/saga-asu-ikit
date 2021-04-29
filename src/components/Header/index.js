@@ -4,6 +4,7 @@ import "./index.scss";
 
 import { sfuLogoHeaderMobile } from "../../assets/images";
 import { Cookie } from "../../libs/cookie.js";
+import { token } from "../../strings/public";
 
 function closedAll() {
   const sidebar = document.querySelector(".main-header__sidebar");
@@ -63,7 +64,7 @@ function helpClick(e) {
 }
 
 function logOut() {
-  Cookie.deleteCookie("usertoken");
+  Cookie.deleteCookie(token);
   localStorage.clear();
   document.location.reload();
 }
