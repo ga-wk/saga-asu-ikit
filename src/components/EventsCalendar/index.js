@@ -10,6 +10,7 @@ import { postData } from "../../libs/requests";
 import { Cookie } from "../../libs/cookie";
 import { monthNames, token } from "../../strings/public";
 import { studentSemesters } from "../../strings/urls";
+
 function showHideDate(event) {
   const li = event.target.parentElement;
   const date = li.querySelector(".week__day-list");

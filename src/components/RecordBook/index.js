@@ -173,8 +173,6 @@ function RecordBookFragments(props) {
   }
 }
 
-
-
 // TODO
 // модалка
 // для десктопа
