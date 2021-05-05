@@ -5,21 +5,22 @@ import { Header } from "../components/Header";
 import Ordering from "../components/Ordering/index";
 import { Cookie } from "../libs/cookie";
 import { postData } from "../libs/requests";
+import { login } from "../strings/links";
+import { token } from "../strings/public";
+import { studentGet } from "../strings/urls";
 
 export const OrderingPage = () => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [user, setUser] = useState(null);
 
-  const url = "http://193.218.136.174:8080/cabinet/rest/student/get";
-
   const data = {
     text: "",
-    userToken: Cookie.getCookie("usertoken"),
+    userToken: Cookie.getCookie(token),
   };
 
   useEffect(() => {
-    const promise = postData(url, data);
+    const promise = postData(studentGet, data);
     if (promise !== undefined) {
       promise
         .then((res) => res.json())
@@ -38,15 +39,13 @@ export const OrderingPage = () => {
     }
   }, [isLoaded]);
 
-  if (!Cookie.getCookie("usertoken")) return <Redirect to="/login" />;
+  if (!Cookie.getCookie(token)) return <Redirect to={login} />;
 
   if (error) {
     return <div>Ошибка: {error.message}</div>;
   } else if (!isLoaded) {
     return <div>Загрузка...</div>;
   } else {
-
-    console.log(user)
     return (
       <Fragment>
         <Header

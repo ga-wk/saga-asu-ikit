@@ -5,19 +5,19 @@ import { Header } from "../components/Header";
 import { Cookie } from "../libs/cookie";
 import { postData } from "../libs/requests";
 import { Redirect } from "react-router";
+import { studentGet, systemNotification } from "../strings/urls";
+import { login } from "../strings/links";
+import { token } from "../strings/public";
 
 export const NotificationsPage = () => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [notifications, setNotifications] = useState(null);
   const [user, setUser] = useState(null);
-  const urlUser = "http://193.218.136.174:8080/cabinet/rest/student/get";
-  const urlNotifications =
-    "http://193.218.136.174:8080/cabinet/rest/notification/systemNotification";
 
   const data = {
     text: "",
-    userToken: Cookie.getCookie("usertoken"),
+    userToken: Cookie.getCookie(token),
   };
 
   let promiseUser = null;
@@ -25,7 +25,7 @@ export const NotificationsPage = () => {
 
   useEffect(() => {
     async function fetchAPI() {
-      promiseUser = postData(urlUser, data);
+      promiseUser = postData(studentGet, data);
       if (promiseUser !== undefined) {
         await promiseUser
           .then((res) => res.json())
@@ -34,7 +34,7 @@ export const NotificationsPage = () => {
         setIsLoaded(false);
       }
 
-      promiseNotifications = postData(urlNotifications, data);
+      promiseNotifications = postData(systemNotification, data);
       if (promiseNotifications !== undefined) {
         await promiseNotifications
           .then((res) => res.json())
@@ -50,15 +50,13 @@ export const NotificationsPage = () => {
     fetchAPI();
   }, [isLoaded]);
 
-  if (!Cookie.getCookie("usertoken")) return <Redirect to="/login" />;
+  if (!Cookie.getCookie(token)) return <Redirect to={login} />;
 
   if (error) {
     return <div>Ошибка: {error.message}</div>;
   } else if (!isLoaded) {
     return <div>Загрузка...</div>;
   } else {
-    console.log(user);
-    console.log(notifications);
     return (
       <Fragment>
         <Header

@@ -27,12 +27,12 @@ export const Notifications = (props) => {
           onClick={itemClick}
           onFocus={itemClick}
         >
-          {props.notifications.map((value, index) => {
+          {props.notifications.map((notification, index) => {
             return (
               <li className="notifications__item item_close" key={index}>
-                <h3 className="notifications__title">{value.header}</h3>
+                <h3 className="notifications__title">{notification.header}</h3>
 
-                <p className="notifications__description">{value.text}</p>
+                <p className="notifications__description">{notification.text}</p>
 
                 <div className="reference">
                   <ul className="reference__list">
