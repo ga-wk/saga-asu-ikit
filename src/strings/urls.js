@@ -4,3 +4,4 @@ export const systemNotification =  "http://193.218.136.174:8080/cabinet/rest/not
 export const studentShedule =      "http://193.218.136.174:8080/cabinet/rest/student/shedule";
 export const studentSemesters =    "http://193.218.136.174:8080/cabinet/rest/student/semesters";
 export const studentRating =       "http://193.218.136.174:8080/cabinet/rest/student/rating";
+export const attendanceDay =       "http://193.218.136.174:8080/cabinet/rest/student/attendance/day";

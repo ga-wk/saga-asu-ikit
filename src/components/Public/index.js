@@ -148,7 +148,9 @@ export const Pagination = () => (
 );
 
 export const filterSemestersByUserId = (semesters, user) => {
+  console.log(semesters)
   return semesters.studentSemesters.filter((semester) => {
+    
     return semester.idGroup === user.student.idGroup;
   });
 };

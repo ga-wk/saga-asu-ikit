@@ -16,8 +16,8 @@ function showHideDate(event) {
   const date = li.querySelector(".week__day-list");
   const desc = li.querySelector(".week__day-desc");
 
-  date.classList.toggle("show");
-  desc.classList.remove("show");
+  // date.classList.toggle("show");
+  // desc.classList.remove("show");
 }
 
 function showHideDesc(event) {
@@ -25,7 +25,7 @@ function showHideDesc(event) {
   console.log(li);
   const desc = li.querySelector(".week__day-desc");
 
-  desc.classList.toggle("show");
+  // desc.classList.toggle("show");
 }
 
 function MobileFragment() {
@@ -501,23 +501,30 @@ const [shedule, setShedule] = useState(null);
   const [monthName, setMonthName] = useState(monthNames[month]);
 
   function incMouth() {
+    let tmpMount = month;
     if (month > 10) {
       updateCurYear(year + 1);
-      updateCurMonth(0);
+      tmpMount = 0
+      updateCurMonth(tmpMount);
     } else {
-      updateCurMonth(month + 1);
+      tmpMount++
+      updateCurMonth(tmpMount);
     }
-    setMonthName(monthNames[month]);
+    console.log(month)
+    setMonthName(monthNames[tmpMount]);
   }
 
   function decMouth() {
+    let tmpMount = month;
     if (month < 1) {
       updateCurYear(year - 1);
-      updateCurMonth(11);
+      tmpMount =11
+      updateCurMonth(tmpMount);
     } else {
-      updateCurMonth(month - 1);
+      tmpMount--
+      updateCurMonth(tmpMount);
     }
-    setMonthName(monthNames[month]);
+    setMonthName(monthNames[tmpMount]);
   }
 
   return (
@@ -559,25 +566,21 @@ const [shedule, setShedule] = useState(null);
             <ul className="dict-list">
               <li className="dict__item"> - Все занятия пропущены</li>
               <li className="dict__item dict__item--no-write">
-                {" "}
                 - Староста не заполнял журнал посещаемости
               </li>
               <li className="dict__item dict__item--pass">
-                {" "}
                 - Есть пропущенные занятия
               </li>
               <li className="dict__item dict__item--100">
-                {" "}
-                - 100%-ая посещаемость{" "}
+                - 100%-ая посещаемость
               </li>
               <li className="dict__item dict__item--no-lessons">
-                {" "}
                 - Занятий не было
               </li>
             </ul>
           </div>
         </div>
-        <div className="events-calendar__info">
+        <div className="events-calendar__info show">
           <ul className="events-calendar__info-lessons lessons__list">
               {shedule?<div>{shedule}</div>:'Загрузка'}
           </ul>
@@ -607,17 +610,14 @@ export const EventsCalendar = ({ user }) => {
   function onChangeSemesterHandler(e) {
     e.preventDefault();
 
-    const promise = new Promise((resolve) => {
+    new Promise(() => {
       const curSem = semesters.filter((sem) => {
         return sem.semesterNumber === Number(e.target.value);
       });
       setCurrentSemester(curSem[0]);
       setCurMonth(Number(curSem[0].dateofbegin.split("-")[1]));
       setCurYear(Number(curSem[0].dateofbegin.split("-")[0]));
-      resolve(curSem[0]);
-    }).then((curSem) => {
-      //   changeCurrentRating(curSem);
-    });
+    })
   }
 
   const [semesters, setSemesters] = useState(null);
@@ -653,7 +653,7 @@ export const EventsCalendar = ({ user }) => {
           });
         })
         .then((result) => {
-          return new Promise((resolve) => {
+          return new Promise(() => {
             setCurrentSemester(result[0]);
             setCurMonth(Number(result[0].dateofbegin.split("-")[1]));
             setCurYear(Number(result[0].dateofbegin.split("-")[0]));

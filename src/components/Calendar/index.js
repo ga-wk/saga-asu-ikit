@@ -42,33 +42,17 @@ export default function Calendar({ month, year, updateShedule }) {
           const block = [];
           block.push(
             <p className="events-calendar__info-title">
-              Расписание на 2020-06-12
+              Расписание на {date.join("-")}
             </p>
           );
           console.log(data);
           console.log('неделя',result)
           if (result.status[0] === "error") {
-            if (data.week === 2) {
-              data.week = 1;
-            } else {
-              data.week = 2;
-            }
-
-            promiseShedule = postData(studentShedule, data);
-            promiseShedule
-              .then((res) => res.json())
-              .then((result) => {
-                console.log(data);
-                console.log('обратная неделя', result)
-                result.subjects.map((el) => {
-                  block.push(
-                    <li className="lessons__item">
-                      <p>{el.subjectName}</p>
-                    </li>
-                  );
-                });
-                updateShedule(block);
-              });
+            block.push(
+              <li className="lessons__item">
+                <p>{result.msg}</p>
+              </li>
+            );
           } else {
             result.subjects.map((el) => {
               block.push(
@@ -82,9 +66,6 @@ export default function Calendar({ month, year, updateShedule }) {
           updateShedule(block);
         });
     }
-
-    const list = document.querySelector(".events-calendar__info");
-    list.classList.toggle("show");
   }
 
   //проверка на весокосность
