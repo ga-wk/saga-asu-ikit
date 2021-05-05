@@ -1,21 +1,24 @@
 @import "../../styles/variables.scss";
+@import "../../styles/reprise.scss";
 
 .events-calendar {
   font-family: "Cera Pro", Arial, sans-serif;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 20px;
 
   margin-left: 20px;
   margin-right: 20px;
 
-  width: 300px;
-
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .events-calendar__semestr-date {
-  margin-top: 20px;
+  max-width: 330px;
+
+  margin: 0 auto;
 }
 
 .events-calendar__semestr-date p {
@@ -23,8 +26,11 @@
   padding: 0;
 }
 .events-calendar__calendar {
+  min-width: 280px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .events-calendar__btn {
@@ -35,6 +41,7 @@
 
   cursor: pointer;
 
+  border-radius: 5px;
   &:first-child {
     background: url("../../img/calendar-arrow.svg");
   }
@@ -47,9 +54,11 @@
     background-position: center center;
   }
 }
-.events-calendar__btn:disabled{
+
+.events-calendar__btn:disabled {
   background-color: #5757572c;
 }
+
 .events-calendar__month {
   display: flex;
   justify-content: center;
@@ -62,7 +71,6 @@
   padding-top: 5px;
   padding-bottom: 5px;
 
-  width: 300px;
   height: 80px;
 }
 
@@ -120,7 +128,7 @@
 
 .events-calendar__info {
   display: none;
-  margin-bottom: 20px;
+  margin: 0 auto;
 }
 
 .show {
@@ -215,13 +223,37 @@
     background-color: #575757;
   }
 }
+.events-calendar__wrapper {
+  margin: 0 auto;
+}
+.events-calendar__dict {
+  display: none;
+}
 
 @media (min-width: $desktop-width) {
   .events-calendar {
+    font-size: 18px;
     width: 1040px;
-  }
 
+    margin: 0 auto;
+  }
+  .events-calendar__semestr-date {
+    margin: auto;
+    max-width: 330px;
+    margin-top: 20px;
+  }
   .events-calendar__calendar {
     margin-left: 300px;
+  }
+
+  .events-calendar__dict {
+    display: block;
+  }
+  .events-calendar__month {
+    width: 300px;
+  }
+  .events-calendar__info {
+    margin: 0 0 20px 0;
+    // margin-bottom: 20px;
   }
 }

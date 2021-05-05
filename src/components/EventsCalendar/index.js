@@ -11,487 +11,12 @@ import { Cookie } from "../../libs/cookie";
 import { monthNames, token } from "../../strings/public";
 import { studentSemesters } from "../../strings/urls";
 
-function showHideDate(event) {
-  const li = event.target.parentElement;
-  const date = li.querySelector(".week__day-list");
-  const desc = li.querySelector(".week__day-desc");
-
-  // date.classList.toggle("show");
-  // desc.classList.remove("show");
-}
-
-function showHideDesc(event) {
-  const li = event.target.parentElement;
-  console.log(li);
-  const desc = li.querySelector(".week__day-desc");
-
-  // desc.classList.toggle("show");
-}
-
-function MobileFragment() {
-  return (
-    <>
-      <section className="events-calendar">
-        <div className="events-calendar__semestr-date">
-          <p>
-            Начало семестра: <span>01.09.2020</span>
-          </p>
-          <p>
-            Окончание семестра: <span>30.01.2021</span>
-          </p>
-        </div>
-
-        <div className="events-calendar__calendar">
-          <span className="events-calendar__month">Ноябрь</span>
-        </div>
-
-        <ul className="events-calendar__list week-list">
-          <li className="week__item">
-            <div className="week__day" onClick={showHideDate}>
-              Понедельник
-            </div>
-
-            <ul className="week__day-list">
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  26
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  02
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  09
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  16
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  23
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  30
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-            </ul>
-          </li>
-          <li className="week__item">
-            <div className="week__day" onClick={showHideDate}>
-              Вторник
-            </div>
-
-            <ul className="week__day-list">
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  26
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  02
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  09
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  16
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  23
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  30
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-            </ul>
-          </li>
-          <li className="week__item">
-            <div className="week__day" onClick={showHideDate}>
-              Среда
-            </div>
-
-            <ul className="week__day-list">
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  26
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  02
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  09
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  16
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  23
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  30
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-            </ul>
-          </li>
-          <li className="week__item">
-            <div className="week__day" onClick={showHideDate}>
-              Четверг
-            </div>
-
-            <ul className="week__day-list">
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  26
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  02
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  09
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  16
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  23
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  30
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-            </ul>
-          </li>
-          <li className="week__item">
-            <div className="week__day" onClick={showHideDate}>
-              Пятница
-            </div>
-
-            <ul className="week__day-list">
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  26
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  02
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  09
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  16
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  23
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  30
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-            </ul>
-          </li>
-          <li className="week__item">
-            <div className="week__day" onClick={showHideDate}>
-              Суббота
-            </div>
-
-            <ul className="week__day-list">
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  26
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  02
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  09
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  16
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  23
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  30
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-            </ul>
-          </li>
-          <li className="week__item">
-            <div className="week__day" onClick={showHideDate}>
-              Воскресенье
-            </div>
-
-            <ul className="week__day-list">
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  26
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  02
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  09
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  16
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  23
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-              <li className="week__day-list__item">
-                <div className="week__day-date" onClick={showHideDesc}>
-                  30
-                </div>
-                <div className="week__day-desc">
-                  Профессионально-ориентированный иностраный язык - Сплепченко
-                  НН.,Шарова А.В.(Эиос)
-                </div>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </section>
-    </>
-  );
-}
-
-function DesktopFragment(
+function Fragment({
   currentSemester,
   month,
   year,
   updateCurYear,
-  updateCurMonth
+  updateCurMonth}
 ) {
 const [shedule, setShedule] = useState(null);
   const dateofbegin = currentSemester.dateofbegin.split("-");
@@ -529,8 +54,8 @@ const [shedule, setShedule] = useState(null);
 
   return (
     <>
-      <section className="events-calendar">
-        <div className="events-calendar__semestr-date">
+      <section className="events-calendar ">
+        <div className="events-calendar__semestr-date ">
           <p>
             Начало семестра: <span>{currentSemester.dateofbegin}</span>
           </p>
@@ -539,7 +64,7 @@ const [shedule, setShedule] = useState(null);
           </p>
         </div>
 
-        <div className="events-calendar__calendar">
+        <div className="events-calendar__calendar ">
           <button
             className="events-calendar__btn"
             onClick={decMouth}
@@ -558,8 +83,8 @@ const [shedule, setShedule] = useState(null);
           />
         </div>
 
-        <div className="events-calendar__wrapper">
-          <div className="events-calendar__days">
+        <div className="events-calendar__wrapper ">
+          <div className="events-calendar__days ">
             <Calendar month={month} year={year} updateShedule={updateShedule}/>
           </div>
           <div className="events-calendar__dict">
@@ -582,7 +107,7 @@ const [shedule, setShedule] = useState(null);
         </div>
         <div className="events-calendar__info show">
           <ul className="events-calendar__info-lessons lessons__list">
-              {shedule?<div>{shedule}</div>:'Загрузка'}
+              {shedule?<div>{shedule}</div>:null}
           </ul>
         </div>
       </section>
@@ -590,21 +115,9 @@ const [shedule, setShedule] = useState(null);
   );
 }
 
-function Fragments(props) {
-  const pageWidth = props.pageWidth;
-  const desktopWidth = 1200;
-  if (pageWidth <= desktopWidth) {
-    return <h1>В разработке</h1>;
-  } else {
-    return DesktopFragment(
-      props.currentSemester,
-      props.month,
-      props.year,
-      props.updateCurYear,
-      props.updateCurMonth
-    );
-  }
-}
+
+    
+
 
 export const EventsCalendar = ({ user }) => {
   function onChangeSemesterHandler(e) {
@@ -673,9 +186,8 @@ export const EventsCalendar = ({ user }) => {
         <h1 className="main-title">
           <a className="main-title__link">Календарь событий</a>
         </h1>
-        <Semester semesters={semesters} />
-        <Fragments
-          pageWidth={document.documentElement.scrollWidth}
+        <Semester semesters={semesters} helper={'EventsCalendar'}/>
+        <Fragment
           currentSemester={currentSemester}
           month={curMonth}
           year={curYear}

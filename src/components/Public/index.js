@@ -6,7 +6,7 @@ import SemesterContext from "../../context/SemesterContext";
 import { Button, Modal } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export const Semester = ({ semesters }) => {
+export const Semester = ({ semesters, helper }) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -27,7 +27,38 @@ export const Semester = ({ semesters }) => {
     console.log("clicked");
   }
 
-  function ModalFunc() {
+  function getModalBody(helper) {
+    switch (helper) {
+      case "RecordBook":
+        return (
+          <Modal.Body>
+            <ul className="helper__list ">
+              <li className="helper__item exam">Экзамен</li>
+              <li className="helper__item offset">Зачет</li>
+              <li className="helper__item course-work">Курсовой проект</li>
+              <li className="helper__item course-project">Курсовая работа</li>
+              <li className="helper__item practice">Практика</li>
+            </ul>
+          </Modal.Body>
+        );
+      case "EventsCalendar":
+        return (
+          <Modal.Body>
+            <ul className="helper__list ">
+              <li className="helper__item exam">- Все занятия пропущены</li>
+              <li className="helper__item offset">- Староста не заполнял журнал посещаемости</li>
+              <li className="helper__item course-work">- Есть пропущенные занятия</li>
+              <li className="helper__item course-project">- 100%-ая посещаемость</li>
+              <li className="helper__item practice">- Занятий не было</li>
+            </ul>
+          </Modal.Body>
+        );
+      default:
+        break;
+    }
+  }
+  const ModalFunc = () => {
+    const modal = getModalBody(helper)
     return (
       <>
         <Button
@@ -57,15 +88,7 @@ export const Semester = ({ semesters }) => {
           <Modal.Header closeButton>
             <Modal.Title>Справка</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
-            <ul className="helper__list ">
-              <li className="helper__item exam">Экзамен</li>
-              <li className="helper__item offset">Зачет</li>
-              <li className="helper__item course-work">Курсовой проект</li>
-              <li className="helper__item course-project">Курсовая работа</li>
-              <li className="helper__item practice">Практика</li>
-            </ul>
-          </Modal.Body>
+          {modal}
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Закрыть
@@ -74,7 +97,7 @@ export const Semester = ({ semesters }) => {
         </Modal>
       </>
     );
-  }
+  };
 
   return (
     <div className="semester__header container">
@@ -148,10 +171,7 @@ export const Pagination = () => (
 );
 
 export const filterSemestersByUserId = (semesters, user) => {
-  console.log(semesters)
   return semesters.studentSemesters.filter((semester) => {
-    
     return semester.idGroup === user.student.idGroup;
   });
 };
-

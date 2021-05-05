@@ -288,7 +288,7 @@ export const RecordBook = ({ user }) => {
         <h1 className="main-title">
           <a className="main-title__link">Зачетная книжка</a>
         </h1>
-        <Semester semesters={semesters} />
+        <Semester semesters={semesters} helper={"RecordBook"} />
         <section className="record-book container">
           <RecordBookFragments
             currentRating={currentRating}
