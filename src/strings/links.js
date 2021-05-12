@@ -8,3 +8,4 @@ export const ordering = "/ordering";
 export const academicPlan = "/academicplan";
 export const studentSchedule = "/schedule";
 export const history = "/ordering/history";
+export const questionnaire = "/questionnaires";
