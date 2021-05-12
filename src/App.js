@@ -27,6 +27,7 @@ import {
   studentSchedule,
 } from "./strings/links";
 import { QuestionnairesPage } from "./pages/QuestionnairesPage";
+import { QuestionnairePage } from "./pages/QuestionnairePage";
 
 export default function App() {
   return (
@@ -44,6 +45,7 @@ export default function App() {
           <Route path={studentSchedule} exact component={StudentSchedulePage} />
           <Route path={history} exact component={HistoryPage} />
           <Route path={questionnaire} exact component={QuestionnairesPage} />
+          <Route path={questionnaire + "/:id"} component={QuestionnairePage} />
         </Switch>
       </div>
     </BrowserRouter>
