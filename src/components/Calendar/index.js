@@ -33,7 +33,7 @@ export default function Calendar({ month, year, updateShedule }) {
       date: date.join("-"),
       userToken: Cookie.getCookie(token),
     };
-    
+
     let promiseShedule = postData(studentShedule, data);
     if (promiseShedule !== undefined) {
       promiseShedule

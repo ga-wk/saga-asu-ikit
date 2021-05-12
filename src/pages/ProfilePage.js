@@ -26,6 +26,7 @@ export const ProfilePage = () => {
         .then((res) => res.json())
         .then(
           (result) => {
+            console.log(result);
             setUser(result);
             setIsLoaded(true);
           },
