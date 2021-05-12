@@ -5,3 +5,5 @@ export const studentShedule =      "http://193.218.136.174:8080/cabinet/rest/stu
 export const studentSemesters =    "http://193.218.136.174:8080/cabinet/rest/student/semesters";
 export const studentRating =       "http://193.218.136.174:8080/cabinet/rest/student/rating";
 export const attendanceDay =       "http://193.218.136.174:8080/cabinet/rest/student/attendance/day";
+export const questionnaireList =   "http://193.218.136.174:8080/cabinet/rest/student/questionnaire/list"
+export const questionnaireOne =   "http://193.218.136.174:8080/cabinet/rest/student/questionnaire/one"
