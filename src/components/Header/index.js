@@ -5,7 +5,7 @@ import "./index.scss";
 import { sfuLogoHeaderMobile } from "../../assets/images";
 import { Cookie } from "../../libs/cookie.js";
 import { token } from "../../strings/public";
-import { questionnaireList } from "../../strings/links";
+import { questionnaire } from "../../strings/links";
 
 function closedAll() {
   const sidebar = document.querySelector(".main-header__sidebar");
@@ -176,7 +176,7 @@ export const Header = (props) => {
                 </a>
               </li>
               <li className="sidebar__item sidebar__subitem">
-                <a className="sidebar__link" href={questionnaireList}>
+                <a className="sidebar__link" href={questionnaire}>
                   Опросник
                 </a>
               </li>

@@ -148,6 +148,14 @@
   }
 }
 
+.item_close {
+  height: 40px;
+  overflow: hidden;
+
+  .btn {
+    display: none;
+  }
+}
 .btn {
   border: none;
   background: none;

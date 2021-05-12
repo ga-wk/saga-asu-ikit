@@ -22,7 +22,7 @@ import {
   notifications,
   ordering,
   profile,
-  questionnaireList,
+  questionnaire,
   recordBook,
   studentSchedule,
 } from "./strings/links";
@@ -43,11 +43,7 @@ export default function App() {
           <Route path={academicPlan} exact component={AcademicPlanPage} />
           <Route path={studentSchedule} exact component={StudentSchedulePage} />
           <Route path={history} exact component={HistoryPage} />
-          <Route
-            path={questionnaireList}
-            exact
-            component={QuestionnairesPage}
-          />
+          <Route path={questionnaire} exact component={QuestionnairesPage} />
         </Switch>
       </div>
     </BrowserRouter>
