@@ -13,7 +13,20 @@ import { OrderingPage } from "./pages/OrderingPage";
 import { AcademicPlanPage } from "./pages/AcademicPlanPage";
 import { HistoryPage } from "./pages/HistoryPage";
 import { StudentSchedulePage } from "./pages/StudentSchedulePage";
-import { academicPlan, eventsCalendar, history, listOfOrders, login, notifications, ordering, profile, recordBook, studentSchedule } from "./strings/links";
+import {
+  academicPlan,
+  eventsCalendar,
+  history,
+  listOfOrders,
+  login,
+  notifications,
+  ordering,
+  profile,
+  questionnaireList,
+  recordBook,
+  studentSchedule,
+} from "./strings/links";
+import { QuestionnairesPage } from "./pages/QuestionnairesPage";
 
 export default function App() {
   return (
@@ -30,6 +43,11 @@ export default function App() {
           <Route path={academicPlan} exact component={AcademicPlanPage} />
           <Route path={studentSchedule} exact component={StudentSchedulePage} />
           <Route path={history} exact component={HistoryPage} />
+          <Route
+            path={questionnaireList}
+            exact
+            component={QuestionnairesPage}
+          />
         </Switch>
       </div>
     </BrowserRouter>
