@@ -59,15 +59,16 @@ const RenderBlocks = ({ blocks, description }) => {
 };
 
 export const Questionnaire = ({ questionnaire }) => {
-  const modal = useRef()
-  const clickModalBtn = (e)=>{
-    e.preventDefault();
-  
-    modal.current.classList.toggle('hidden')
-  }
+  const modal = useRef();
+  const wrapper = useRef();
+
+  const clickModalBtn = (e) => {
+    modal.current.classList.toggle("hidden");
+    wrapper.current.classList.toggle("wrapper");
+  };
 
   return (
-    <div className="questionnaire container">
+    <div ref={wrapper} className="questionnaire container">
       <form className="questionnaire__form">
         <ul className="blocks__list">
           <RenderBlocks
@@ -82,10 +83,14 @@ export const Questionnaire = ({ questionnaire }) => {
       </form>
 
       <button onClick={clickModalBtn} className="modal__btn-open">
-        <svg viewBox="0 0 100 80" width="40" height="40">
-          <rect width="100" height="20"></rect>
-          <rect y="30" width="100" height="20"></rect>
-          <rect y="60" width="100" height="20"></rect>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="35px"
+          version="1.1"
+          viewBox="0 0 32 32"
+          width="40px"
+        >
+          <path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z" />
         </svg>
       </button>
 
@@ -107,7 +112,9 @@ export const Questionnaire = ({ questionnaire }) => {
         <ul className="blocks__list">
           {questionnaire.questionnaire.blocks.map((el, index) => (
             <li className="blocks__item">
-              <a href={`#${index}`}>{el.name}</a>
+              <a onClick={clickModalBtn} href={`#${index}`}>
+                {el.name}
+              </a>
             </li>
           ))}
         </ul>

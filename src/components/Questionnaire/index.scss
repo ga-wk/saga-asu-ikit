@@ -36,11 +36,14 @@
     overflow: hidden;
   }
 
-  .hidden{
+  .hidden {
     display: none;
   }
 }
-
+.wrapper {
+  padding-top: 15px;
+  background: rgba(87, 87, 87, 0.2);
+}
 .blocks {
   &__list {
     list-style-type: none;
@@ -143,21 +146,44 @@
   &__header {
     display: flex;
     justify-content: space-between;
-
+    align-items: center;
     background: #f28f1b;
   }
   &__btn-open {
     position: fixed;
     right: 0;
     bottom: 0;
+
+    background: #f28f1b;
+    border: none;
+    border-radius: 5px;
   }
 
   &__btn-close {
+    background: none;
+    border: none;
+  }
+
+  &__title {
+    font-family: Cera Pro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 25px;
+
+    letter-spacing: 0.05em;
+
+    color: #222322;
+
+    margin: 0;
+    padding: 10px 0;
   }
   &__href {
     position: fixed;
     top: 80px;
 
+    max-width: 290px;
+    height: 100%;
     background: #fff;
 
     border: 1px solid #222322;
