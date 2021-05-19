@@ -180,7 +180,7 @@ export const Header = (props) => {
                   Опросник
                 </a>
               </li>
-              <li className="sidebar__item sidebar__subitem">
+              {/* <li className="sidebar__item sidebar__subitem">
                 <a className="sidebar__link" href="/listoforders">
                   Список приказов
                 </a>
@@ -194,7 +194,7 @@ export const Header = (props) => {
                 <a className="sidebar__link" href="/academicplan">
                   Учебный план
                 </a>
-              </li>
+              </li> */}
             </ul>
           </li>
         </ul>
