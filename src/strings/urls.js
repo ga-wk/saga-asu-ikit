@@ -7,3 +7,4 @@ export const studentRating =       "http://193.218.136.174:8080/cabinet/rest/stu
 export const attendanceDay =       "http://193.218.136.174:8080/cabinet/rest/student/attendance/day";
 export const questionnaireList =   "http://193.218.136.174:8080/cabinet/rest/student/questionnaire/list"
 export const questionnaireOne =   "http://193.218.136.174:8080/cabinet/rest/student/questionnaire/one"
+export const questionnaireSendresult =   "http://193.218.136.174:8080/cabinet/rest/student/questionnaire/sendresult"

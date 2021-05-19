@@ -1,4 +1,9 @@
 import React, { useRef } from "react";
+import { Redirect } from "react-router";
+import { Cookie } from "../../libs/cookie";
+import { postData } from "../../libs/requests";
+import { token } from "../../strings/public";
+import { questionnaireSendresult } from "../../strings/urls";
 
 import "./index.scss";
 
@@ -12,7 +17,7 @@ const RenderQuestions = ({ questions, parIndex }) => {
             <label
               className={`questions__item-question`}
               key={index + "_" + parIndex + ans.name}>
-              <input type="radio" name={el.name} />
+              <input required type="radio" name={el.name} value={ans.score} id_ans={ans.id} custom={ans.custom} score={ans.score} />
               <div className={`${el.type === 2 ? "fder-column" : ""}`}>
                 <span>{ans.name}</span>
                 {el.type === 2 || ans.custom ? (
@@ -25,8 +30,9 @@ const RenderQuestions = ({ questions, parIndex }) => {
 
         {el.type === 0 ? (
           <label className="questions__item-question-final">
-            <input type="radio" name={el.name} />
+            <input required type="radio" name={el.name} value={-1} id_ans={el.answers[0].id} custom={0} score={0} />
             <span>Затрудняюсь ответить</span>
+
           </label>
         ) : null}
       </li>
@@ -60,7 +66,44 @@ const RenderBlocks = ({ blocks, description }) => {
 export const Questionnaire = ({ questionnaire }) => {
   const modal = useRef();
   const wrapper = useRef();
+  const form = useRef();
 
+  const formSubmit = (e) => {
+    e.preventDefault();
+
+    const body = {
+      userToken: Cookie.getCookie(token),
+      id: questionnaire.questionnaire.id,
+      answers: [],
+    }
+
+    for (let i = 0, length = form.current.length; i < length; i++) {
+      if (form.current[i].checked) {
+        let value = ""
+        if (form.current[i].nextElementSibling.lastElementChild !== null) {
+          value = form.current[i].nextElementSibling.lastElementChild.value || ""
+        }
+
+        const answer = {
+          id: form.current[i].getAttribute('id_ans'),
+          custom: form.current[i].getAttribute('custom'),
+          score: form.current[i].getAttribute('score'),
+          name: form.current[i].getAttribute('name'),
+          value: value,
+        }
+
+        body.answers.push(answer)
+      }
+    }
+
+    postData(questionnaireSendresult, body).then((result) => {
+      alert("Благодарим за уделенное время ")
+      return <Redirect to={"/questionnaires"} />
+    }).catch(e => {
+      console.error(e)
+    })
+
+  }
   const clickModalBtn = (e) => {
     modal.current.classList.toggle("hidden");
     wrapper.current.classList.toggle("wrapper");
@@ -68,7 +111,7 @@ export const Questionnaire = ({ questionnaire }) => {
 
   return (
     <div ref={wrapper} className="questionnaire container">
-      <form className="questionnaire__form">
+      <form ref={form} onSubmit={formSubmit} className="questionnaire__form">
         <ul className="blocks__list">
           <RenderBlocks
             blocks={questionnaire.questionnaire.blocks}

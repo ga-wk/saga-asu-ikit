@@ -39,11 +39,9 @@ export const Questionnaires = ({ questionnaires }) => {
                 {el.subject}
               </h3>
               <p className="questionnaire__date">
-                Дата:{" "}
-                {[
+                Дата:{[
                   el.posted.split(" ")[2],
-                  String(months.indexOf(el.posted.split(" ")[1]) + 1).length ===
-                  1
+                  String(months.indexOf(el.posted.split(" ")[1]) + 1).length === 1
                     ? `0${months.indexOf(el.posted.split(" ")[1]) + 1}`
                     : months.indexOf(el.posted.split(" ")[1]) + 1,
                   el.posted.split(" ")[5],
@@ -51,8 +49,7 @@ export const Questionnaires = ({ questionnaires }) => {
               </p>
               <a
                 className="questionnaire__link btn"
-                href={questionnaire + "/" + el.id}
-              >
+                href={questionnaire + "/" + el.id}>
                 Пройти опрос
               </a>
             </li>
