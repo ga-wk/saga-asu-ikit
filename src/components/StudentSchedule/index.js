@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
 
-import { Header } from "../Header";
 import { postData } from "../../libs/requests";
 import { Cookie } from "../../libs/cookie";
-import { monthNames, token } from "../../strings/public";
+import { token } from "../../strings/public";
 import { studentSemesters } from "../../strings/urls";
-import { filterSemestersByUserId, Semester } from "../Public";
+import { filterSemestersByUserId } from "../Public";
 
 function ScheduleHeader() {
   return (
@@ -214,7 +213,7 @@ function MobileFragment() {
   );
 }
 
-function DesktopFragment({ user, currentDate, parity, currentWeek, onChangeDateHandler}) {
+function DesktopFragment({ user, parity, currentWeek, onChangeDateHandler }) {
   let weekStr = convertMondaySundayToString(currentWeek);
 
   return (
@@ -411,8 +410,8 @@ function getMondaySunday(d) {
   let _date = d.split('-').map(item => Number(item))
   d = new Date(_date[0], _date[1] - 1, _date[2]);
   var day = d.getDay(),
-      diff = d.getDate() - day + (day == 0 ? -6:1), // adjust when day is sunday
-      sunday = d.getDate() - day + 7;
+    diff = d.getDate() - day + (day == 0 ? -6 : 1), // adjust when day is sunday
+    sunday = d.getDate() - day + 7;
   return [new Date(d.setDate(diff)), new Date(d.setDate(sunday))];
 }
 
@@ -439,10 +438,8 @@ function StudentSchedule({ user }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isSemLoaded, setIsSemLoaded] = useState(false);
 
-  const [semesters, setSemesters] = useState(null);
   const [error, setError] = useState("");
 
-  const [currentSemester, setCurrentSemester] = useState(null);
   const [isCurrentSemLoaded, setIsCurrentSemLoaded] = useState(false);
 
   function onChangeDateHandler(e) {
@@ -480,19 +477,14 @@ function StudentSchedule({ user }) {
         .then((result) => {
           return new Promise((resolve) => {
             const filteredSems = filterSemestersByUserId(result, user);
-            setSemesters(filteredSems);
             setIsSemLoaded(true);
             resolve(filteredSems);
-          });
+          }).catch(error => { setError(error) });
         })
         .then((result) => {
           return new Promise(() => {
-            setCurrentSemester(result[0]);
-            //setCurMonth(Number(result[0].dateofbegin.split("-")[1]));
-            //setCurYear(Number(result[0].dateofbegin.split("-")[0]));
             setIsCurrentSemLoaded(true);
-            console.log('sem', result[0])
-          });
+          }).catch(error => { setError(error) });;
         })
     }
   }, [isLoaded, isSemLoaded, isCurrentSemLoaded]);

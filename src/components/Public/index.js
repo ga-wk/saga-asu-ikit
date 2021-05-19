@@ -19,8 +19,6 @@ export const Semester = ({ semesters, helper }) => {
   let sortSems = semesters;
   sortSems.sort(compareSems);
 
-  let semCount = semesters.length;
-
   const { onChangeSemesterHandler } = useContext(SemesterContext);
 
   function onHandleModal() {

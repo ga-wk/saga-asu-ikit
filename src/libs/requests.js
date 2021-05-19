@@ -1,4 +1,4 @@
-"use strict";
+
 
 export function postData(url = "", data = {}) {
   const response = fetch(url, {
